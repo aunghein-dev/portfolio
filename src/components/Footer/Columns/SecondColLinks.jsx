@@ -37,7 +37,24 @@ export default function SecondColLinks() {
       <ul className="flex flex-col gap-4">
         {links.map((item, index) => (
           <li key={index}>
-            {item.onClick ? (
+            {item.href === "/feed.xml" ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={item.label}
+                className={`inline-block font-manrope text-[0.85rem] text-tertiary-txt 
+                  transition-colors duration-300 ease-in-out 
+                  hover:underline hover:underline-offset-[0.15rem]
+                  decoration-[0.15rem]
+                  hover:brightness-125 hover:text-shadow`}
+                style={{ transitionProperty: "color", color: "inherit" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = item.color)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+              >
+                {item.label}
+              </a>
+            ) : item.onClick ? (
               <button
                 onClick={item.onClick}
                 title={item.label}
