@@ -70,8 +70,8 @@ export default function AboutInfo() {
             height="533"
             decoding="async"
             className="object-cover object-top h-full rounded-md"
-            src="src/assets/profile.jpg"
-            srcSet="src/assets/profile.jpg 1x, src/assets/profile.jpg 2x"
+            src="/profile.jpg"
+            srcSet="/profile.jpg 1x, /profile.jpg 2x"
             style={{ color: "transparent" }}
           />
         </div>

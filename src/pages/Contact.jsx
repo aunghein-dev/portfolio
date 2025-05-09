@@ -13,7 +13,7 @@ export default function Contact() {
 
       {/* Updated Image */}
       <img
-        src="src/assets/0.png"
+        src="/0.png"
         alt='Illustration of a person holding a phone and a t-shirt that reads "Hi"'
         className="object-cover object-center max-w-64 mx-auto mt-12"
         style={{

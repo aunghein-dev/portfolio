@@ -7,24 +7,21 @@ export default function Experience() {
       company: "TuTu Micro Finance - Myanmar",
       duration: "Jan 2024 – Dec 2024",
       companyLink: "https://mattersupply.co/",
-      companyLogo: "src/assets/static-images/tutu.jpg".replace("&amp;", "&"),
+      companyLogo: "/tutu.jpg".replace("&amp;", "&"),
     },
     {
       title: "Junior Database Administrator",
       company: "TuTu Micro Finance - Myanmar",
       duration: "May 2022 – Dec 2023",
       companyLink: "https://www.bpsmart.ai/",
-      companyLogo: "src/assets/static-images/tutu.jpg".replace("&amp;", "&"),
+      companyLogo: "/tutu.jpg".replace("&amp;", "&"),
     },
     {
       title: "IT Intern",
       company: "Carnival Cruise Line - United States",
       duration: "Aug 2019 – Sep 2020",
       companyLink: "https://www.servex.com.pe/",
-      companyLogo: "src/assets/static-images/carnival_cruise.png".replace(
-        "&amp;",
-        "&"
-      ),
+      companyLogo: "/carnival_cruise.png".replace("&amp;", "&"),
     },
   ];
 

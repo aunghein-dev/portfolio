@@ -7,7 +7,7 @@ export default function Education() {
       school: "Mandalay University",
       duration: "2015 – 2019",
       schoolLink: "https://www.mu.edu.mm/",
-      schoolLogo: "src/assets/static-images/mu.png",
+      schoolLogo: "/mu.png",
     },
     {
       degree: "High School Certificate",
@@ -15,7 +15,7 @@ export default function Education() {
       duration: "2012 – 2015",
       schoolLink:
         "https://www.edge.com.mm/listing/aung-myay-thar-san-b-e-h-s-11-u132862.html",
-      schoolLogo: "src/assets/static-images/behs11.jpg",
+      schoolLogo: "/behs11.jpg",
     },
   ];
 

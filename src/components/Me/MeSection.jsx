@@ -1,6 +1,6 @@
 import MeInfo from "./Me.info";
 import "../../components/Me/Me.css";
-import profileImg from "../../assets/photo.jpg";
+import profileImg from "/photo.jpeg";
 import InfoNavigation from "../Me.buttons/InfoNavigation";
 
 function Me() {
