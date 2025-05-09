@@ -1,18 +1,21 @@
 import MeInfo from "./Me.info";
 import "../../components/Me/Me.css";
-import profileImg from "../../assets/profile.jpg";
+import profileImg from "../../assets/photo.jpg";
 import InfoNavigation from "../Me.buttons/InfoNavigation";
 
 function Me() {
   return (
-    <section>
-      <div className="me-info">
-        <div className="me-info-container">
-          <MeInfo />
+    <section className="">
+      <div className="flex flex-col-reverse sm:flex-row items-center sm:items-start justify-between gap-4.5">
+        <div className="w-full sm:w-auto">
+          <div className="text-[var(--color-primary-txt)]">
+            <MeInfo />
+          </div>
         </div>
 
+        {/* Image on top (mobile), right (desktop) */}
         <div className="img-container">
-          <div className="w-[152px] h-[152px] rounded-full overflow-hidden">
+          <div className="w-[140px] h-[140px] rounded-full overflow-hidden">
             <img
               src={profileImg}
               alt="profile"

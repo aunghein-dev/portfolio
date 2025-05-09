@@ -10,9 +10,8 @@ const BlogSection = () => {
     .slice(-3);
 
   return (
-    <section className="flex flex-col gap-6 mt-16" id="blog">
-      <div className="blog-home-header-container">
-        {/*<h2
+    <section className="flex flex-col gap-6 " id="blog">
+      {/*<h2
           className="text-[var(--color-orange)]
                        text-[1.4rem] font-[500] leading-[1.6rem]
                        saturate-200 brightness-110"
@@ -20,10 +19,7 @@ const BlogSection = () => {
           From the blog
         </h2>*/}
 
-        <MySubHeading color="var(--color-orange)">From the blog</MySubHeading>
-
-        <div className="btn-container flex gap-[0.8rem]">
-          {/*<a
+      {/*<a
             href="/feed.xml"
             target="_blank"
             rel="noopener noreferrer"
@@ -36,7 +32,7 @@ const BlogSection = () => {
             <span>RSS Feed</span>
           </a>
           */}
-          {/*<Link
+      {/*<Link
             to="/blog"
             className="flex items-center gap-1 px-3.5 py-3 text-sm bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md"
             style={{ color: "var(--color-accent)" }}
@@ -47,7 +43,9 @@ const BlogSection = () => {
             <span>View all</span>
           </Link>
           */}
-
+      <div className="flex flex-row justify-between items-center">
+        <MySubHeading color="var(--color-orange)">Latest Blogs</MySubHeading>
+        <div className="btn-container flex gap-[0.8rem]">
           <ThemeButton
             to="/feed.xml"
             title="RSS Feed"

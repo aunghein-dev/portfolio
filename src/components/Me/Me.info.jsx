@@ -6,7 +6,7 @@ import MyParagraph from "../typography/MyParagraph";
 export default function MeInfo() {
   return (
     <div>
-      <div className="text-[1.7rem]">
+      <div className="text-[1.6rem]">
         <WavingSpan />
         <WavingHello />
       </div>
@@ -41,8 +41,7 @@ export default function MeInfo() {
         <div className="mt-4">
           <MyParagraph>
             <div>
-              {/*className="info-text"*/}
-              Passionate and creative frontend software engineer from{" "}
+              {/*className="info-text"*/}I am a frontend software engineer froms{" "}
               <MyLink
                 to="https://www.google.com/maps/place/Myanmar/@4,-72z/"
                 title="Visit Myanmar on Google Maps"
@@ -54,7 +53,13 @@ export default function MeInfo() {
                 <span role="img" aria-label="Flag of Myanmar">
                   🇲🇲
                 </span>
-              </MyLink>
+              </MyLink>{" "}
+              <span>
+                with a passion for building intuitive, user-friendly interfaces.
+                I focus on creating high-quality, performance-driven software,
+                constantly refining my skills and staying up-to-date with the
+                latest trends.
+              </span>
               {/* 
            <a
               title="Visit Myanmar on Google Maps"
@@ -74,8 +79,10 @@ export default function MeInfo() {
             </div>
 
             <div className="info-text mt-2">
-              Detail-driven, I strive to build great-looking, user-friendly
-              software while enhancing my skills along the way
+              Driven by attention to detail and a user-centric approach, I
+              strive to deliver innovative solutions that exceed expectations. I
+              seek opportunities to collaborate, learn, and contribute to
+              impactful projects.
             </div>
           </MyParagraph>
         </div>

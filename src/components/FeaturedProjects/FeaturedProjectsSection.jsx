@@ -2,6 +2,7 @@ import React from "react";
 import MySubHeading from "../typography/MySubHeading";
 import ThemeButton from "../typography/ThemeButton";
 import ProjectsData from "../../data/Projects.data.js";
+import { Link } from "react-router-dom";
 
 const projects = [...ProjectsData]
   .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate)) // Descending
@@ -56,7 +57,7 @@ export default function FeaturedProjects() {
       <ul className="flex flex-col gap-1">
         {projects.map((project, idx) => (
           <li key={idx}>
-            <a
+            <Link
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
@@ -145,7 +146,7 @@ export default function FeaturedProjects() {
                   {project.description}
                 </p>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

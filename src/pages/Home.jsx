@@ -6,8 +6,14 @@ import MeSection from "../components/Me/MeSection";
 export default function Home() {
   return (
     <main>
-      <MeSection />
-      <BlogSection />
+      <div className="mt-16">
+        <MeSection />
+      </div>
+
+      <div className="mt-16">
+        <BlogSection />
+      </div>
+
       <FeaturedProjectsSection />
       <div
         className="mt-8"
