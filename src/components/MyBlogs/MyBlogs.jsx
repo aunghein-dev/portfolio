@@ -18,7 +18,7 @@ const MyBlogs = () => {
 
   return (
     <section className="flex flex-col gap-6 " id="blog">
-      <div className="blog-home-header-container">
+      <div className="flex flex-row justify-between items-center">
         <MySubHeading color="var(--color-orange)">Blogs</MySubHeading>
         <div className="btn-container flex gap-[0.8rem]">
           {/*<a
