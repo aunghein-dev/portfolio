@@ -5,7 +5,7 @@
     <link>http://localhost:5173/</link>
     <description>Latest posts by Aung Hein Thant</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 May 2025 03:49:16 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 09 May 2025 12:53:58 GMT</lastBuildDate>
     
   <item>
     <title>SQL JOIN Optimization: Best Practices for Efficient Queries</title>
@@ -16,11 +16,11 @@
   </item>
 
   <item>
-    <title>Create a contact form in Next.js with Resend and Valibot</title>
-    <link>http://localhost:5173//posts/create-contact-form-nextjs</link>
-    <guid>http://localhost:5173//posts/create-contact-form-nextjs</guid>
+    <title>Why Java is the Perfect Starting Point for New Programmers</title>
+    <link>http://localhost:5173//posts/java-beginner</link>
+    <guid>http://localhost:5173//posts/java-beginner</guid>
     <pubDate>Mon, 03 Feb 2025 17:30:00 GMT</pubDate>
-    <description><![CDATA[Leverage server functions to easily create a simple contact form...]]></description>
+    <description><![CDATA[Java remains one of the most recommended programming languages for beginners.]]></description>
   </item>
 
   </channel>
