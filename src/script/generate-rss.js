@@ -2,7 +2,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import blogPosts from '../data/BlogPosts.data.jsx'; 
+import blogPosts from '../data/BlogPosts.data.js'; 
 
   
 const PostsData = blogPosts;
