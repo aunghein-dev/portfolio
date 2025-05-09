@@ -41,7 +41,7 @@ export default function MeInfo() {
         <div className="mt-4">
           <MyParagraph>
             <div>
-              {/*className="info-text"*/}I am a frontend software engineer froms{" "}
+              {/*className="info-text"*/}I am a frontend software engineer from{" "}
               <MyLink
                 to="https://www.google.com/maps/place/Myanmar/@4,-72z/"
                 title="Visit Myanmar on Google Maps"
