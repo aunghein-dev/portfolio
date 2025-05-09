@@ -41,6 +41,14 @@ const BlogPost = () => {
     }
   }, [slug, post]);
 
+  useEffect(() => {
+    if (!loading) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    }
+  }, [loading]);
+
   if (loading) {
     return <div className="text-white text-center mt-12">Loading...</div>;
   }
