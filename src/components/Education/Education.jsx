@@ -5,14 +5,14 @@ export default function Education() {
     {
       degree: "Bechelor of Computer Science",
       school: "Mandalay University",
-      duration: "2015 – 2019",
+      duration: "2013 – 2018",
       schoolLink: "https://www.mu.edu.mm/",
       schoolLogo: "/mu.png",
     },
     {
       degree: "High School Certificate",
       school: "No.(11) Mandalay High School",
-      duration: "2012 – 2015",
+      duration: "2003 – 2013",
       schoolLink:
         "https://www.edge.com.mm/listing/aung-myay-thar-san-b-e-h-s-11-u132862.html",
       schoolLogo: "/behs11.jpg",
