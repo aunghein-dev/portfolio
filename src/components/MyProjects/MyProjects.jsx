@@ -1,6 +1,6 @@
 import React from "react";
 import MySubHeading from "../typography/MySubHeading";
-import ProjectsData from "../../data/Projects.data";
+import ProjectsData from "../../data/Projects.data.js";
 
 const projects = ProjectsData;
 

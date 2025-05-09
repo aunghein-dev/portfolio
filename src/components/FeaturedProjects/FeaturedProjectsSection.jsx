@@ -1,7 +1,7 @@
 import React from "react";
 import MySubHeading from "../typography/MySubHeading";
 import ThemeButton from "../typography/ThemeButton";
-import ProjectsData from "../../data/Projects.data";
+import ProjectsData from "../../data/Projects.data.js";
 
 const projects = [...ProjectsData]
   .sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate)) // Descending

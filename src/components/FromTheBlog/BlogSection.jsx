@@ -2,7 +2,7 @@ import React from "react";
 import "../FromTheBlog/BlogSection.css";
 import ThemeButton from "../typography/ThemeButton";
 import MySubHeading from "../typography/MySubHeading";
-import BlogsData from "../../data/BlogPosts.data";
+import BlogsData from "../../data/BlogPosts.data.js";
 
 const BlogSection = () => {
   const posts = [...BlogsData]

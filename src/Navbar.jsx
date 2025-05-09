@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { NavData } from "./data/Navbar.data";
-import { hover } from "framer-motion";
+import { NavData } from "./data/Navbar.data.js";
 
 export default function Navbar() {
   return (

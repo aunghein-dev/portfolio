@@ -3,7 +3,7 @@ import "../FromTheBlog/BlogSection.css";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import MySubHeading from "../typography/MySubHeading";
-import PostsData from "../../data/BlogPosts.data";
+import PostsData from "../../data/BlogPosts.data.js";
 import ThemeButton from "../typography/ThemeButton";
 
 export const posts = PostsData;
