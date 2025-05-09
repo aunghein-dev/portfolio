@@ -2,8 +2,10 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import PostsData from "../data/BlogPosts.data";
+import blogPosts from '../data/BlogPosts.data.jsx'; 
+
   
+const PostsData = blogPosts;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
