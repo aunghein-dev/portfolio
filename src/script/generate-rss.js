@@ -3,9 +3,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import PostsData from "../data/BlogPosts.data";
-
-// Define the posts data
-const PostsData = PostsData;
   
 
 const __filename = fileURLToPath(import.meta.url);
