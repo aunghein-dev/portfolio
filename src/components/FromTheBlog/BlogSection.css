@@ -1,0 +1,17 @@
+
+.blog-home-header-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 1rem; 
+}
+
+.btn-container{
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  align-items: center;
+  text-align: center;
+}
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Aung Hein Thant Blog</title>
+    <link>http://localhost:5173/</link>
+    <description>Latest posts by Aung Hein Thant</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 May 2025 03:49:16 GMT</lastBuildDate>
+    
+  <item>
+    <title>SQL JOIN Optimization: Best Practices for Efficient Queries</title>
+    <link>http://localhost:5173//posts/sql-join-optimization</link>
+    <guid>http://localhost:5173//posts/sql-join-optimization</guid>
+    <pubDate>Wed, 07 May 2025 17:30:00 GMT</pubDate>
+    <description><![CDATA[Master the art of writing efficient SQL JOIN queries with indexing strategies, query rewriting, and performance analysis tools.]]></description>
+  </item>
+
+  <item>
+    <title>Create a contact form in Next.js with Resend and Valibot</title>
+    <link>http://localhost:5173//posts/create-contact-form-nextjs</link>
+    <guid>http://localhost:5173//posts/create-contact-form-nextjs</guid>
+    <pubDate>Mon, 03 Feb 2025 17:30:00 GMT</pubDate>
+    <description><![CDATA[Leverage server functions to easily create a simple contact form...]]></description>
+  </item>
+
+  </channel>
+</rss>
