@@ -3,6 +3,7 @@ import "../FromTheBlog/BlogSection.css";
 import ThemeButton from "../typography/ThemeButton";
 import MySubHeading from "../typography/MySubHeading";
 import BlogsData from "../../data/BlogPosts.data.js";
+import { Link } from "react-router-dom";
 
 const BlogSection = () => {
   const posts = [...BlogsData]
@@ -77,13 +78,13 @@ const BlogSection = () => {
       <ol className="flex flex-col gap-2">
         {posts.map((post, index) => (
           <li key={index} className="block">
-            <a
+            <Link
               className="group relative no-underline p-2.5 mobile-lg:p-3 -mx-3 
             w-[calc(100%+1.5rem)] transition-colors 
             flex items-top gap-4 rounded-md 
             hover:bg-[rgb(138,180,248,0.1)] blog-post"
               title={post.title}
-              href={`blog/${post.slug}`}
+              to={`blog/${post.slug}`}
               style={{
                 "--tint": post.tint,
                 color: "var(--color-accent)",
@@ -149,7 +150,7 @@ const BlogSection = () => {
                   <span>{post.views}</span>
                 </p>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ol>

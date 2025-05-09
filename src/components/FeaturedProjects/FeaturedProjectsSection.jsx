@@ -58,7 +58,7 @@ export default function FeaturedProjects() {
         {projects.map((project, idx) => (
           <li key={idx}>
             <Link
-              href={project.url}
+              to={project.url}
               target="_blank"
               rel="noopener noreferrer"
               className="group/project 

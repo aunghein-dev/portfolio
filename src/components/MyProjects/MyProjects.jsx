@@ -1,6 +1,7 @@
 import React from "react";
 import MySubHeading from "../typography/MySubHeading";
 import ProjectsData from "../../data/Projects.data.js";
+import { Link } from "react-router-dom";
 
 const projects = ProjectsData;
 
@@ -25,8 +26,8 @@ export default function MyProjects() {
       <ul className="flex flex-col gap-1">
         {projects.map((project, idx) => (
           <li key={idx}>
-            <a
-              href={project.url}
+            <Link
+              to={project.url}
               target="_blank"
               rel="noopener noreferrer"
               className="group/project 
@@ -114,7 +115,7 @@ export default function MyProjects() {
                   {project.description}
                 </p>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
