@@ -15,14 +15,15 @@ const paths = {
   12: "M12 20C16.42 20 20 16.42 20 12S16.42 4 12 4 4 7.58 4 12 7.58 20 12 20M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22C6.47 22 2 17.5 2 12C2 6.5 6.5 2 12 2M12.5 13.03H11V7H12.5V13.03Z",
 };
 
-const getIconPath = (timeStr) => {
-  try {
-    let hours = Number(timeStr.split(":")[0]) || 4;
-    if (hours > 12) hours -= 12;
-    return paths[hours] || paths[4];
-  } catch (e) {
-    return paths[4];
-  }
+const getMyanmarHourIconPath = () => {
+  const now = new Date();
+  const myanmarOffsetMinutes = 6.5 * 60;
+  const localOffsetMinutes = now.getTimezoneOffset();
+  const myanmarTime = new Date(
+    now.getTime() + (myanmarOffsetMinutes + localOffsetMinutes) * 60000
+  );
+  let hour = myanmarTime.getHours() % 12 || 12;
+  return paths[hour] || paths[4];
 };
 
 export default function MyanmarClock({ pure = "" }) {
@@ -34,29 +35,25 @@ export default function MyanmarClock({ pure = "" }) {
       const now = new Date();
       const utc = now.getTime() + now.getTimezoneOffset() * 60000;
       const mmTime = new Date(utc + 6.5 * 60 * 60 * 1000);
-
       const hours = mmTime.getHours();
       const minutes = mmTime.getMinutes();
       const ampm = hours >= 12 ? "PM" : "AM";
       const h12 = hours % 12 || 12;
 
-      const formattedTime = `${String(h12).padStart(2, "0")}<span class="animate-pulse">:</span>${String(
-        minutes
-      ).padStart(2, "0")}`;
-
+      const formattedTime = `${String(h12).padStart(2, "0")}<span class="animate-pulse">:</span>${String(minutes).padStart(2, "0")}`;
       const formattedString =
         pure === ""
-          ? `<div ><span class="font-mono tabular-nums">${formattedTime}</span> <span class="">${ampm}</span> <abbr title="Myanmar Standard Time" class="no-underline ">MMT.</abbr></div>`
-          : `<div class="-ml-1.5"><span class="font-mono tabular-nums">${formattedTime}</span> <span class="">${ampm}</span></div>`;
+          ? `<div><span class="font-mono tabular-nums">${formattedTime}</span> <span>${ampm}</span> <abbr title="Myanmar Standard Time" class="no-underline">MMT.</abbr></div>`
+          : `<div class="-ml-1.5"><span class="font-mono tabular-nums">${formattedTime}</span> <span>${ampm}</span></div>`;
 
       setCurrentTime(formattedString);
-      setIconPath(getIconPath(formattedTime));
+      setIconPath(getMyanmarHourIconPath());
     };
 
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [pure]);
 
   return (
     <div
@@ -70,10 +67,7 @@ export default function MyanmarClock({ pure = "" }) {
       >
         <path d={iconPath} />
       </svg>
-      <span
-        className="tabular-nums"
-        dangerouslySetInnerHTML={{ __html: currentTime }}
-      />
+      <span dangerouslySetInnerHTML={{ __html: currentTime }} />
     </div>
   );
 }
