@@ -1,4 +1,10 @@
-import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaEnvelope,
+  FaFacebook,
+} from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { SiBluesky } from "react-icons/si";
 
@@ -40,11 +46,11 @@ const SocialData = [
       "hover:text-[#ae3077] hover:bg-[#f9ebf3] dark:hover:text-[#d472a9] dark:hover:bg-[#3a1028] focus:text-[#ae3077] focus:bg-[#f9ebf3] dark:focus:text-[#d472a9] dark:focus:bg-[#3a1028]",
   },
   {
-    href: "",
-    title: "Bluesky",
-    src: "Bluesky",
+    href: "https://www.facebook.com/share/16a5uoosSW/?mibextid=wwXIfr",
+    title: "Facebook",
+    src: "Facebook",
     userName: "@aunghein",
-    icon: <SiBluesky className="size-4.5" />,
+    icon: <FaFacebook className="size-4.5" />,
     hocusColor:
       "hover:text-[#1185FE] hover:bg-[#e7f3ff] dark:hover:text-[#409DFE] dark:hover:bg-[#031b33] focus:text-[#1185FE] focus:bg-[#e7f3ff] dark:focus:text-[#409DFE] dark:focus:bg-[#031b33]",
   },

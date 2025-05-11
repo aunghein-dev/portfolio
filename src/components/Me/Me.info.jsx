@@ -54,7 +54,7 @@ export default function MeInfo() {
                 <span role="img" aria-label="Flag of Myanmar">
                   🇲🇲
                 </span>
-              </MyLink>{" "}
+              </MyLink>
               <span>
                 , skilled in building scalable systems and intuitive UIs. I
                 deliver performance-driven software across both frontend and

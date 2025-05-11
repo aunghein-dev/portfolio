@@ -35,7 +35,7 @@ const MyBlogs = () => {
           </a>*/}
 
           <ThemeButton
-            to="/"
+            to="/feed.xml"
             title="RSS Feed"
             target="_blank"
             rel="noopener noreferrer"
