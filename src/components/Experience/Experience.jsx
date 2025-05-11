@@ -6,22 +6,24 @@ export default function Experience() {
       title: "Senior Backend Developer",
       company: "TuTu Micro Finance - Myanmar",
       duration: "Jan 2024 – Dec 2024",
-      companyLink: "https://mattersupply.co/",
+      companyLink:
+        "https://www.woorifg.com/eng/company/network/global/contentsid/171/index.do",
       companyLogo: "/tutu.jpg".replace("&amp;", "&"),
     },
     {
       title: "Junior Database Administrator",
       company: "TuTu Micro Finance - Myanmar",
       duration: "May 2022 – Dec 2023",
-      companyLink: "https://www.bpsmart.ai/",
+      companyLink:
+        "https://www.woorifg.com/eng/company/network/global/contentsid/171/index.do",
       companyLogo: "/tutu.jpg".replace("&amp;", "&"),
     },
     {
-      title: "IT Intern",
+      title: "IT Helpdesk",
       company: "Carnival Cruise Line - United States",
       duration: "Aug 2019 – Sep 2020",
-      companyLink: "https://www.servex.com.pe/",
-      companyLogo: "/carnival_cruise.png".replace("&amp;", "&"),
+      companyLink: "https://shipjobs.carnival.com",
+      companyLogo: "/carnival_cruise.jpeg".replace("&amp;", "&"),
     },
   ];
 

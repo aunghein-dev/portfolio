@@ -14,5 +14,6 @@ export default defineConfig({
   ],
   optimizeDeps: {
     include: ['@mdx-js/react']
-  }
+  },
+  
 })

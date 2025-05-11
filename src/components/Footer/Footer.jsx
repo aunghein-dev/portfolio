@@ -4,8 +4,15 @@ import FirstColLinks from "./Columns/FirstColLinks";
 import SecondColLinks from "./Columns/SecondColLinks";
 import MyanmarClock from "../MyanmarClock/MyanmarClock";
 import MyParagraph from "../typography/MyParagraph";
+import { useEffect } from "react";
+
 
 export default function Footer() {
+
+  useEffect(() => {
+    
+  }, []);
+
   return (
     <footer className="footer">
       <div
@@ -66,6 +73,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
       <div className="text-[var(--color-secondary-txt)] text-[0.85rem]">
         <MyanmarClock />
       </div>
