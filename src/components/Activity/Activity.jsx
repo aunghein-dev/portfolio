@@ -32,7 +32,9 @@ export default function Activity() {
         const updatedActivityData = [
           {
             type:
-              data.isPlaying === false || undefined
+              data.isPlaying === false ||
+              undefined ||
+              data.type === "last_played"
                 ? "Last Played"
                 : "Now Playing",
             title: data.track.name,
