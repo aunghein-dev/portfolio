@@ -2,6 +2,8 @@ import React from "react";
 import MySubHeading from "../typography/MySubHeading";
 import MyLink from "../typography/MyLink";
 import MyParagraph from "../typography/MyParagraph";
+import ThemeButton from "../typography/ThemeButton";
+import { FiDownload } from "react-icons/fi";
 
 export default function AboutInfo() {
   return (
@@ -14,8 +16,19 @@ export default function AboutInfo() {
       </h1>
       */}
 
-      <MySubHeading color="var(--color-green)">About</MySubHeading>
-      <MyParagraph className="max-w-nice">
+      <div className="flex flex-row items-center justify-between">
+        <MySubHeading color="var(--color-green)">About</MySubHeading>
+        <ThemeButton
+          icon={<FiDownload />}
+          target="_blank"
+          to="https://www.canva.com/design/DAGl4vQpReQ/-Zt7i28Pc_mt6DxxlRvLYA/edit"
+        >
+          {" "}
+          CV Form
+        </ThemeButton>
+      </div>
+
+      <MyParagraph>
         <span role="img" aria-label="waving hand">
           👋
         </span>{" "}
@@ -55,7 +68,7 @@ export default function AboutInfo() {
         modern web technologies.
       </MyParagraph>
 
-      <MyParagraph className="max-w-nice">
+      <MyParagraph>
         My core tech stack includes Spring Boot for scalable backend services,
         HTML, CSS, and JavaScript for accessible, responsive UIs, and React.js
         for dynamic frontends. I'm also deeply familiar with MySQL and designing

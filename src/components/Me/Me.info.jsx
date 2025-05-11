@@ -40,8 +40,9 @@ export default function MeInfo() {
 
         <div className="mt-4">
           <MyParagraph>
-            <div>
-              {/*className="info-text"*/}I am a frontend software engineer from{" "}
+            <div className="tracking-wide">
+              {/*className="info-text"*/}I am a full-stack software developer
+              from{" "}
               <MyLink
                 to="https://www.google.com/maps/place/Myanmar/@4,-72z/"
                 title="Visit Myanmar on Google Maps"
@@ -55,10 +56,9 @@ export default function MeInfo() {
                 </span>
               </MyLink>{" "}
               <span>
-                with a passion for building intuitive, user-friendly interfaces.
-                I focus on creating high-quality, performance-driven software,
-                constantly refining my skills and staying up-to-date with the
-                latest trends.
+                , skilled in building scalable systems and intuitive UIs. I
+                deliver performance-driven software across both frontend and
+                backend, ensuring efficient, seamless user experiences.
               </span>
               {/* 
            <a
@@ -78,11 +78,11 @@ export default function MeInfo() {
            */}
             </div>
 
-            <div className="info-text mt-2">
-              Driven by attention to detail and a user-centric approach, I
-              strive to deliver innovative solutions that exceed expectations. I
-              seek opportunities to collaborate, learn, and contribute to
-              impactful projects.
+            <div className="info-text mt-2.5 tracking-wide">
+              Passionate about solving complex challenges, I focus on continuous
+              improvement and impactful solutions. I thrive in collaborative
+              environments, adapting quickly to new technologies and
+              contributing to meaningful projects.
             </div>
           </MyParagraph>
         </div>

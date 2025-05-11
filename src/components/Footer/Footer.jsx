@@ -6,12 +6,8 @@ import MyanmarClock from "../MyanmarClock/MyanmarClock";
 import MyParagraph from "../typography/MyParagraph";
 import { useEffect } from "react";
 
-
 export default function Footer() {
-
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <footer className="footer">
@@ -47,7 +43,7 @@ export default function Footer() {
           */}
           <div className="mt-3">
             <MyParagraph>
-              Passionate and creative frontend software engineer from Myanmar{" "}
+              Passionate and creative fullstack software developer from Myanmar{" "}
               <span style={{ color: "var(--color-primary-txt)" }}>🇲🇲</span>
             </MyParagraph>
           </div>

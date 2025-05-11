@@ -34,7 +34,7 @@ export default function ContactAtom() {
               Myanmar
             </a>
             <span>&nbsp;🇲🇲&nbsp;</span>
-            <span>and</span>
+            <span>and&nbsp;</span>
           </p>
 
           <Doing

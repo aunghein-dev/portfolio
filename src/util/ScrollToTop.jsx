@@ -1,24 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function ScrollToTop() {
   const { pathname } = useLocation();
+  const prevPathname = useRef(pathname);
 
   useEffect(() => {
-    // Smooth scroll to top on route change
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // Also handle scroll to top on clicking the same link
-    const handleSamePageLinkClick = () => {
+    // Check if we are on the same page or different page
+    if (pathname !== prevPathname.current) {
+      // Scroll to top only when the route changes (new page)
       window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    }
 
-    // Attach listener for same-page anchor clicks
-    window.addEventListener("same-page-click", handleSamePageLinkClick);
-
-    return () => {
-      window.removeEventListener("same-page-click", handleSamePageLinkClick);
-    };
+    // Update prevPathname to current pathname
+    prevPathname.current = pathname;
   }, [pathname]);
 
   return null;

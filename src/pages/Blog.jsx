@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 export default function Blog() {
   return (
     <section>
-      <div className="mt-18">
+      <div className="mt-16">
         <MyBlogs />
       </div>
 

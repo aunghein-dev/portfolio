@@ -9,7 +9,7 @@ import Footer from "../components/Footer/Footer";
 export default function AboutPage() {
   return (
     <div>
-      <div className="mt-18">
+      <div className="mt-16">
         <AboutInfo />
       </div>
 
