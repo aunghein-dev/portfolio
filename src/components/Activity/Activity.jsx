@@ -53,7 +53,7 @@ export default function Activity() {
     }
 
     fetchSpotifyData();
-  }, [dynamicActivityData, nowPlaying]);
+  }, []);
 
   return (
     <section
