@@ -64,10 +64,7 @@ export default function Activity() {
       }}
     >
       <MySubHeading color="var(--color-primary-txt)">Activity</MySubHeading>
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-3 tablet-sm:gap-4 mt-2 
-                      min-h-[100px]"
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 tablet-sm:gap-4 mt-2 ">
         {dynamicActivityData.map((item, index) => (
           <a
             key={index}
@@ -81,7 +78,6 @@ export default function Activity() {
                   rounded-md no-underline 
                   transition truncate 
                   overflow-hidden
-                  h-full
                   ${item.isMusic ? "max-h-28" : ""}`}
           >
             {/* Blurred Background for Music */}
