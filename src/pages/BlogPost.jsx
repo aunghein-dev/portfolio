@@ -8,6 +8,7 @@ import MyParagraph from "../components/typography/MyParagraph";
 import Footer from "../components/Footer/Footer";
 import ActionButton from "../components/Molecules/ActionButton";
 import ThemeButton from "../components/typography/ThemeButton";
+import Loading from "../components/Shared/Loading";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -42,7 +43,7 @@ const BlogPost = () => {
   }, [slug, post]);
 
   if (loading) {
-    return <div className="text-white text-center mt-12">Loading...</div>;
+    return <Loading />;
   }
 
   if (error || !post) {
@@ -72,13 +73,6 @@ const BlogPost = () => {
             background: "var( --color-blog-image-gradient)",
           }}
         />
-        {/* Optionally, you can use the Img component to show the image with similar effects */}
-        {/* <Img 
-          src={post.image}
-          alt={`Cover image for blog post: "${post.title}"`}
-          className="h-full w-full"
-          priority
-        /> */}
       </figure>
 
       <header className="mx-auto z-20 relative ">

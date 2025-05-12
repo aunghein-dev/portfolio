@@ -8,14 +8,6 @@ import { FiDownload } from "react-icons/fi";
 export default function AboutInfo() {
   return (
     <section className="flex flex-col gap-5" id="about">
-      {/* <h1
-        className="filter saturate-125 brightness-115 text-[25px] font-[500]"
-        style={{ color: "var(--color-green)" }}
-      >
-        About
-      </h1>
-      */}
-
       <div className="flex flex-row items-center justify-between">
         <MySubHeading color="var(--color-green)">About</MySubHeading>
         <ThemeButton
@@ -45,25 +37,6 @@ export default function AboutInfo() {
             🇲🇲
           </span>
         </MyLink>
-        {/* <a
-          title="Myanmar (Burma)"
-          href="https://www.google.com/maps/place/Myanmar (Burma)/@4,-72z/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block font-medium text-[var(--color-accent-dark)] 
-            hover:underline decoration-[var(--color-accent)] 
-            hover:text-[var(--color-accent)]
-            decoration-[var(--color-divider)]
-            hover:decoration-[var(--color-accent)] 
-            decoration-[2.5px]
-            self-start transition-colors underline"
-        >
-          Myanmar{" "}
-          <span role="img" aria-label="Myanmar flag">
-            🇲🇲
-          </span>
-        </a>
-        */}
         , with hands-on experience building high-performance applications using
         modern web technologies.
       </MyParagraph>
@@ -113,22 +86,6 @@ export default function AboutInfo() {
         I love collaborating with developers around the globe and actively
         contribute to open source projects. You can find some of my code and
         contributions on{" "}
-        {/* <a
-          href="https://github.com/aunghein-dev"
-          title="GitHub"
-          className="inline-block font-medium text-[var(--color-accent-dark)] 
-            hover:underline decoration-[var(--color-accent)] 
-            hover:text-[var(--color-accent)]
-            decoration-[var(--color-divider)]
-            hover:decoration-[var(--color-accent)] 
-            decoration-[2.5px]
-            self-start transition-colors underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-        */}
         <MyLink
           to="https://github.com/aunghein-dev"
           title="GitHub"
@@ -150,21 +107,6 @@ export default function AboutInfo() {
         </h2>
         <MyParagraph>
           Feel free to{" "}
-          {/*<a
-            title="Send Aung Hein an Email"
-            className="inline-block font-medium text-[var(--color-accent-dark)] 
-            hover:underline decoration-[var(--color-accent)] 
-            hover:text-[var(--color-accent)]
-            decoration-[var(--color-divider)]
-            hover:decoration-[var(--color-accent)] 
-            decoration-[2.5px]
-            self-start transition-colors underline"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="mailto:aunghein.mailer@gmail.com?subject=Hi%20Aung Hein!"
-          >
-            send me a message
-          </a>*/}
           <MyLink
             to="mailto:aunghein.mailer@gmail.com?subject=Hi%20Aung Hein!"
             title="Send Aung Hein an Email"

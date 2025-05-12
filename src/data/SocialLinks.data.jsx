@@ -6,7 +6,7 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
-import { SiBluesky } from "react-icons/si";
+
 
 const SocialData = [
   {
