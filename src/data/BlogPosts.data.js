@@ -9,7 +9,7 @@ const PostsData = [
     views: "5 views",
     image:
       "https://cdn2.iconfinder.com/data/icons/football-26/256/football-soccer-tv-stream-live-monitor-1024.png",
-    tint: "rgb(70, 134, 231)",
+    tint: "rgb(235,55,53)",
     tags: ["CLI Worker", "API", "Football", "Streaming"],
     author: "Your Name",
   },
@@ -23,7 +23,7 @@ const PostsData = [
     views: "15 views",
     image:
       "https://symbols.getvecta.com/stencil_27/79_sql-database-generic.494ff6320e.svg",
-    tint: "rgb(70, 134, 231)",
+    tint: "rgb(0 ,120, 215)",
     tags: ["SQL", "Database", "Optimization"],
     author: "Your Name",
   },
@@ -37,7 +37,7 @@ const PostsData = [
     views: "20 views",
     image:
       "https://www.channelpartner.es/wp-content/uploads/2021/09/10085_21.jpg.webp",
-    tint: "rgb(206, 206, 206)",
+    tint: "rgb(214, 214 ,214)",
     tags: ["Java", "Beginner", "SpringBoot"],
     author: "Your Name",
   },

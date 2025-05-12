@@ -21,19 +21,6 @@ const MyBlogs = () => {
       <div className="flex flex-row justify-between items-center">
         <MySubHeading color="var(--color-orange)">Blogs</MySubHeading>
         <div className="btn-container flex gap-[0.8rem]">
-          {/*<a
-            href="/feed.xml"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 px-3.5 py-3 text-sm bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md"
-            style={{ color: "var(--color-accent)" }}
-          >
-            <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
-              <path d="M6.18,15.64A2.18,2.18 0 0,1 8.36,17.82C8.36,19 7.38,20 6.18,20C5,20 4,19 4,17.82A2.18,2.18 0 0,1 6.18,15.64M4,4.44A15.56,15.56 0 0,1 19.56,20H16.73A12.73,12.73 0 0,0 4,7.27V4.44M4,10.1A9.9,9.9 0 0,1 13.9,20H11.07A7.07,7.07 0 0,0 4,12.93V10.1Z" />
-            </svg>
-            <span>RSS Feed</span>
-          </a>*/}
-
           <ThemeButton
             to="/feed.xml"
             title="RSS Feed"
@@ -68,13 +55,14 @@ const MyBlogs = () => {
                   <li key={index} className="block">
                     <Link
                       className="group relative no-underline p-2.5 mobile-lg:p-3 -mx-3 
-                      w-[calc(100%+1.5rem)] transition-colors 
-                      flex items-center gap-4 rounded-md 
-                      hover:bg-[rgb(138,180,248,0.1)] blog-post"
+             w-[calc(100%+1.5rem)] transition-colors 
+             flex items-top gap-4 rounded-md 
+             hover:bg-[var(--tint-bg)] blog-post"
                       title={post.title}
-                      to={`/blog/${post.slug}`}
+                      to={`${post.slug}`}
                       style={{
                         "--tint": post.tint,
+                        "--tint-bg": `${post.tint.replace("rgb", "rgba").replace(")", ", 0.15)")}`,
                         color: "var(--color-accent)",
                         fontSize: "0.9rem",
                         fontWeight: "300",

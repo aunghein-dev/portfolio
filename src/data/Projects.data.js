@@ -7,7 +7,7 @@ const ProjectsData = [
     url: "https://github.com/aunghein-dev/myan-home-tainment",
     image:
       "https://raw.githubusercontent.com/aunghein-dev/myan-home-tainment/main/images/logo.png",
-    tint: "rgb(178,210, 216)",
+    tint: "rgb(141,196,67)",
     releaseDate: "2025-01-30",
   },
   {
@@ -17,7 +17,7 @@ const ProjectsData = [
     url: "https://github.com/aunghein-dev/myan-home-admin",
     image:
       "https://raw.githubusercontent.com/aunghein-dev/myan-home-tainment/main/images/logo2.png",
-    tint: "rgb(178,210, 216)",
+    tint: "rgb(240,92,39)",
     releaseDate: "2025-01-30",
   },
   {
@@ -27,7 +27,7 @@ const ProjectsData = [
     url: "https://github.com/aunghein-dev/mvlink-backend-webservice",
     image:
       "https://png.pngtree.com/png-vector/20230311/ourmid/pngtree-api-gateway-management-tool-for-client-and-backend-services-vector-png-image_50783068.jpg",
-    tint: "rgb(178,210, 216)",
+    tint: "rgb(51,131,227)",
     releaseDate: "2025-01-30",
   },
   {
@@ -37,7 +37,7 @@ const ProjectsData = [
     url: "https://github.com/aunghein-dev/football-streaming-api",
     image:
       "https://cdn2.iconfinder.com/data/icons/football-26/256/football-soccer-tv-stream-live-monitor-1024.png",
-    tint: "rgb(178,210, 216)",
+    tint: "rgb(235,55,53)",
     releaseDate: "2025-05-12",
   },
 ];

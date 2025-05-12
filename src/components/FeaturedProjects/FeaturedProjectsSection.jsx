@@ -62,18 +62,18 @@ export default function FeaturedProjects() {
               target="_blank"
               rel="noopener noreferrer"
               className="group/project 
-                         no-underline relative 
-                         p-2.5 mobile-lg:p-3 
-                         tablet-md:rounded-md 
-                         -mx-3 w-[calc(100%_+_1.5rem)] 
-                         transition-all flex flex-row 
-                         items-center gap-3 
-                         hover:bg-[rgb(138,180,248,0.1)] 
-                         rounded-md hover:rounded-md"
+             no-underline relative 
+             p-2.5 mobile-lg:p-3 
+             tablet-md:rounded-md 
+             -mx-3 w-[calc(100%+1.5rem)] 
+             transition-all flex flex-row 
+             items-center gap-3 
+             hover:bg-[var(--tint-bg)] 
+             rounded-md hover:rounded-md"
               style={{
                 "--tint": project.tint,
-                "--tint-bg": `${project.tint.replace("rgb", "rgba").replace(")", ", 0.1)")}`,
-                "--tint-border": `${project.tint.replace("rgb", "rgba").replace(")", ", 0.25)")}`,
+                "--tint-bg": `${project.tint.replace("rgb", "rgba").replace(")", ", 0.15)")}`,
+                "--tint-border": `${project.tint.replace("rgb", "rgba").replace(")", ", 0.4)")}`,
               }}
             >
               <img
@@ -81,16 +81,17 @@ export default function FeaturedProjects() {
                 width={56}
                 height={56}
                 className="object-center 
-                           rounded-md p-1.5 
+                           rounded-md p-2 
                            transition-all 
                            aspect-square 
-                           object-contain 
+                           object-center
+                           object-cover 
                            bg-[var(--tint-bg)] 
                            group-hover/project:p-1 
                            group-hover/project:saturate-125 
                            group-hover/project:bg-transparent 
                            group-hover/project:drop-shadow-
-                           [0_1px_1px_var(--tint)]"
+                           [0_1px_1px_var(--tint-bg)]"
                 src={project.image}
               />
               <div className="flex flex-col gap-1">
@@ -116,12 +117,13 @@ export default function FeaturedProjects() {
                     title={`${project.stars} stars on GitHub`}
                     aria-label={`${project.stars} stars on GitHub`}
                     className="flex items-center 
-           gap-1 text-tertiary-txt px-1 
+           gap-1  px-1 
            rounded-md transition-colors 
            border border-transparent 
            bg-[var(--tint-bg)] 
            font-medium 
-           group-hover/project:text-secondary-txt 
+           text-[var(--color-secondary-txt)]
+           group-hover/project:text-[var(--color-primary-txt)]
            group-hover/project:border-[var(--tint-border)] 
            text-[0.75rem]"
                   >
