@@ -38,6 +38,8 @@ body {
 ::backdrop {
   /* Base */
 
+  --color-badge : rgba(12, 18, 30, 0.85);
+
   --color-blockquote:rgba(56, 103, 214, 0.024);
   --color-border-blockquote:rgba(6, 10, 21, 0.12);
 
@@ -94,6 +96,7 @@ body {
 
 html.dark {
   /* Base */
+  --color-badge : rgba(251, 252, 254, 0.85);
 
   --color-blockquote:rgba(215, 225, 247, 0.05);
   --color-border-blockquote:rgba(235, 240, 251, 0.18);

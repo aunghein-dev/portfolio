@@ -72,13 +72,12 @@ export default function Experience() {
                               mr-1.5"
                     src={experience.companyLogo}
                   />
-                  <div className="flex flex-col flex-1">
+                  <div className="flex flex-col flex-1 gap-[0.2rem]">
                     <p
-                      className="font-mono tabular-nums 
-                                 line-clamp-1 text-[0.8rem]"
+                      className="font-mono tabular-nums text-[0.8rem]"
                       style={{
                         color: "var(--color-tertiary-txt)",
-                        wordSpacing: "0",
+                        wordSpacing: "-4px",
                       }}
                     >
                       <span>{experience.duration.split(" – ")[0]}</span> –{" "}

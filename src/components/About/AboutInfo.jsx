@@ -21,7 +21,7 @@ export default function AboutInfo() {
         <ThemeButton
           icon={<FiDownload />}
           target="_blank"
-          to="https://www.canva.com/design/DAGl4vQpReQ/-Zt7i28Pc_mt6DxxlRvLYA/edit"
+          to="/aunghein-cv-form-v1.pdf"
         >
           {" "}
           CV Form

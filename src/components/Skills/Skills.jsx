@@ -33,7 +33,7 @@ const skills = [
   { name: "MongoDB", tint: "76 175 80", icon: <SiMongodb /> }, // MongoDB green
   { name: "Docker", tint: "0 123 255", icon: <SiDocker /> }, // Docker blue
   { name: "Git", tint: "240 80 51", icon: <SiGit /> }, // Git red-orange
-  { name: "GitHub", tint: "252 109 35", icon: <SiGithub /> }, // GitHub black
+  { name: "GitHub", tint: "87 87 87", icon: <SiGithub /> }, // GitHub black
   { name: "Vite", tint: "100 108 255", icon: <SiVite /> }, // Vite blue
 ];
 
@@ -41,7 +41,10 @@ export default function Skills() {
   return (
     <div>
       <MySubHeading color="var(--color-primary-txt)">Skills</MySubHeading>
-      <ul className="flex items-center gap-2.5 flex-wrap mt-6">
+      <ul
+        className="flex items-center gap-2.5 flex-wrap mt-6
+        text-[var(--color-badge)]"
+      >
         {skills.map((skill) => (
           <SkillBadge
             key={skill.name}

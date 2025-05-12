@@ -3,8 +3,8 @@ import MySubHeading from "../typography/MySubHeading";
 export default function Education() {
   const educationList = [
     {
-      degree: "Bechelor of Computer Science",
-      school: "Mandalay University",
+      degree: "Bachelor of Computer Science",
+      school: "University of Mandalay",
       duration: "2013 – 2018",
       schoolLink: "https://www.mu.edu.mm/",
       schoolLogo: "/mu.png",
@@ -60,13 +60,13 @@ export default function Education() {
                               mr-1.5"
                     src={edu.schoolLogo}
                   />
-                  <div className="flex flex-col flex-1">
+                  <div className="flex flex-col flex-1 gap-[0.2rem]">
                     <p
                       className="font-mono tabular-nums 
-                                 line-clamp-1 text-[0.8rem]"
+                                  text-[0.8rem]"
                       style={{
                         color: "var(--color-tertiary-txt)",
-                        wordSpacing: "0",
+                        wordSpacing: "-4px",
                       }}
                     >
                       {edu.duration}

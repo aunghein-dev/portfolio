@@ -9,10 +9,10 @@ export default function SkillBadge({ name, icon, tint }) {
 
   return (
     <li
-      className={`flex items-center gap-2 text-xs rounded-md px-4 py-2 border transition-all duration-300 cursor-pointer`}
+      className={`flex items-center gap-2 text-[0.85rem] rounded-md px-4 py-2 border transition-all duration-300 cursor-pointer`}
       style={{
         backgroundColor: "rgba(34, 62, 128, 0.1)",
-        color: "rgba(251, 252, 254, 0.85)",
+
         borderColor: "rgba(235, 240, 251, 0.18)",
         ...(isHovered
           ? {
