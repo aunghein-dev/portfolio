@@ -28,15 +28,15 @@ function Me() {
           </div>
 
           {/* Floating "Thinking..." Note */}
-          <div className="absolute -top-3 -left-14">
+          <div className="absolute -top-5.5 -left-16">
             {/* Main Bubble */}
             <div
-              className="relative flex items-center justify-center text-xs font-medium text-[var(--color-primary-txt)] shadow-lg"
+              className="relative flex items-center justify-center text-xs font-medium text-[var(--color-secondary-txt)] shadow-lg"
               style={{
-                backgroundColor: "var(--color-surface-variant)",
-                borderRadius: "1rem",
-                height: "44px",
-                maxWidth: "126px",
+                backgroundColor: "var(--color-surface)",
+                borderRadius: "4rem",
+                height: "50px",
+                maxWidth: "140px",
                 padding: "0.5rem 1rem",
               }}
             >
@@ -48,9 +48,9 @@ function Me() {
 
               {/* Tail (rotated square like Facebook) */}
               <div
-                className="absolute -bottom-1 left-6 w-3 h-3 rotate-45"
+                className="absolute -bottom-1 left-11 w-3 h-3 rotate-45"
                 style={{
-                  backgroundColor: "var(--color-surface-variant)",
+                  backgroundColor: "var(--color-surface)",
                   borderRadius: "0.1rem",
                   boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
                 }}
@@ -58,10 +58,10 @@ function Me() {
             </div>
 
             {/* Thought Dots with Curved Trail */}
-            <div className="absolute top-[54px] left-8">
-              <span className="absolute top-0 left-0 w-2 h-2 rounded-full bg-[var(--color-surface-variant)] opacity-90 shadow-sm"></span>
-              <span className="absolute top-3 left-2 w-1.5 h-1.5 rounded-full bg-[var(--color-surface-variant)] opacity-70 shadow-sm"></span>
-              <span className="absolute top-5.5 left-4 w-1 h-1 rounded-full bg-[var(--color-surface-variant)] opacity-50 shadow-sm"></span>
+            <div className="absolute top-[59px] left-12.5">
+              <span className="absolute top-0 left-0 w-2 h-2 rounded-full bg-[var(--color-surface)] opacity-99 shadow-sm"></span>
+              <span className="absolute top-2.5 left-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-surface)] opacity-90 shadow-sm"></span>
+              <span className="absolute top-4.5 left-3.5 w-1 h-1 rounded-full bg-[var(--color-surface)] opacity-60 shadow-sm"></span>
             </div>
           </div>
         </div>
