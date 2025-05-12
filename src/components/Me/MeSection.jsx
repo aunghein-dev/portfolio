@@ -3,6 +3,7 @@ import "../../components/Me/Me.css";
 import profileImg from "/photo.jpeg";
 import InfoNavigation from "../Me.buttons/InfoNavigation";
 import { Doing } from "../../components/Molecules/Doing";
+import dayjs from "dayjs";
 
 function Me() {
   return (
@@ -35,11 +36,15 @@ function Me() {
                 backgroundColor: "var(--color-surface-variant)",
                 borderRadius: "1rem",
                 height: "44px",
-                width: "110px",
+                maxWidth: "126px",
                 padding: "0.5rem 1rem",
               }}
             >
-              <Doing />
+              <Doing
+                time={dayjs().format("h")}
+                isPm={dayjs().format("A") === "PM"}
+                isWeekend={dayjs().day() === 6 || dayjs().day() === 7}
+              />
 
               {/* Tail (rotated square like Facebook) */}
               <div
