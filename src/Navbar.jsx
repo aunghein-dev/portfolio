@@ -5,7 +5,10 @@ export default function Navbar() {
   return (
     <nav className="nav">
       <Link className="site-title" to="/">
-        <span className="flex align-center px-2 py-1">Aung Hein</span>
+        <div className="flex flex-row items-center justify-center pl-0 pr-2 py-0.5">
+          <img src="/personal-logo.png" alt="" className="w-8 h-8" />
+          <span className="flex align-center ">Aung Hein</span>
+        </div>
       </Link>
       <ul className="nav-links">
         {NavData.map((item) => (

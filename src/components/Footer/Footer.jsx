@@ -30,7 +30,10 @@ export default function Footer() {
                 }
               }}
             >
-              Aung Hein
+              <div className="flex flex-row items-center">
+                <img src="/personal-logo.png" alt="" className="w-8 h-8" />
+                <span>Aung Hein</span>
+              </div>
             </MyLink>
           </div>
 

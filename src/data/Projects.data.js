@@ -30,6 +30,16 @@ const ProjectsData = [
     tint: "rgb(178,210, 216)",
     releaseDate: "2025-01-30",
   },
+  {
+    title: "Football Live Streaming Api",
+    description: "Football Live Streaming Api is a serverless API built with Cloudflare Workers",
+    stars: 2,
+    url: "https://github.com/aunghein-dev/football-streaming-api",
+    image:
+      "https://cdn2.iconfinder.com/data/icons/football-26/256/football-soccer-tv-stream-live-monitor-1024.png",
+    tint: "rgb(178,210, 216)",
+    releaseDate: "2025-05-12",
+  },
 ];
 
 export default ProjectsData;
