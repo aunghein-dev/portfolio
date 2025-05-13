@@ -51,6 +51,7 @@ function Me() {
                 height: "50px",
                 maxWidth: "140px",
                 padding: "0.5rem 1rem",
+                zIndex: 50,
               }}
             >
               <Doing

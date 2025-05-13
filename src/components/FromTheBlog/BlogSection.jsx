@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const BlogSection = () => {
   const posts = [...BlogsData]
     .sort((a, b) => new Date(b.date) - new Date(a.date)) // newest to oldest
-    .slice(0, 3) // latest 3
+    .slice(0, 3); // latest 3
 
   return (
     <section className="flex flex-col gap-6 " id="blog">
