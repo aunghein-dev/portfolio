@@ -1,9 +1,24 @@
 const PostsData = [
   {
-    title: "Football Live Streaming API Worker",
+    title: "Football Myanmar Odds API",
+    slug: "scraping-football-myanmar-odds",
+    description:
+      "Building a Serverless Football Myanmar Odds API with Cloudflare Worker & Google Script",
+    date: "May 13, 2025",
+    readTime: "8 min read",
+    views: "2 views",
+    image:
+      "https://www.lsports.eu/wp-content/uploads/Image-for-the-blog-02.png",
+    tint: "rgb(37, 150, 190)",
+    tags: ["Cloudflare Workers", "JavaScript", "Football Odds", "Myanmar", "API"],
+    author: "Aung Hein",
+  },
+  
+  {
+    title: "Football Live Streaming API",
     slug: "football-streaming-api-worker",
     description:
-      "How to build a football live streaming API using Cloudflare Workers, including handling CORS, resolving stream URLs, and optimizing performance.",
+      "Live streaming API using Cloudflare Workers, including handling CORS",
     date: "May 12, 2025",
     readTime: "5 min read",
     views: "5 views",
@@ -11,13 +26,13 @@ const PostsData = [
       "https://cdn2.iconfinder.com/data/icons/football-26/256/football-soccer-tv-stream-live-monitor-1024.png",
     tint: "rgb(235,55,53)",
     tags: ["CLI Worker", "API", "Football", "Streaming"],
-    author: "Your Name",
+    author: "Aung Hein",
   },
   {
     title: "SQL JOIN Optimization: Best Practices for Efficient Queries",
     slug: "sql-join-optimization",
     description:
-      "Master the art of writing efficient SQL JOIN queries with indexing strategies, query rewriting, and performance analysis tools.",
+      "Efficient SQL JOIN queries with indexing strategies, query rewriting, and performance analysis tools.",
     date: "May 08, 2024",
     readTime: "10 min read",
     views: "15 views",
@@ -25,7 +40,7 @@ const PostsData = [
       "https://symbols.getvecta.com/stencil_27/79_sql-database-generic.494ff6320e.svg",
     tint: "rgb(0 ,120, 215)",
     tags: ["SQL", "Database", "Optimization"],
-    author: "Your Name",
+    author: "Aung Hein",
   },
   {
     title: "Why Java is the Perfect Starting Point for New Programmers",
@@ -39,7 +54,7 @@ const PostsData = [
       "https://www.channelpartner.es/wp-content/uploads/2021/09/10085_21.jpg.webp",
     tint: "rgb(214, 214 ,214)",
     tags: ["Java", "Beginner", "SpringBoot"],
-    author: "Your Name",
+    author: "Aung Hein",
   },
 ];
 

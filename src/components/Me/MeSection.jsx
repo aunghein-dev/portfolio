@@ -4,8 +4,15 @@ import profileImg from "/photo.jpeg";
 import InfoNavigation from "../Me.buttons/InfoNavigation";
 import { Doing } from "../../components/Molecules/Doing";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 function Me() {
+  const [loading, setLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
   return (
     <section className="">
       <div className="flex flex-col-reverse sm:flex-row items-center sm:items-start justify-between gap-4.5">
@@ -16,19 +23,25 @@ function Me() {
         </div>
 
         {/* Image on top (mobile), right (desktop) */}
-        <div className="img-container relative">
+        <div className="relative">
           {/* Profile Picture */}
           <div className="w-[140px] h-[140px] rounded-full overflow-hidden">
+            {loading && (
+              <div className="w-full h-full bg-gray-300 animate-pulse"></div> // Loading Skeleton
+            )}
             <img
               src={profileImg}
               alt="profile"
               loading="eager"
-              className="w-full h-full object-cover"
+              className={`w-full h-full object-cover ${loading ? "opacity-0" : "opacity-100"} transition-opacity duration-300`} // Smooth transition
+              onLoad={handleImageLoad}
             />
           </div>
 
           {/* Floating "Thinking..." Note */}
-          <div className="absolute -top-5.5 -left-16">
+          <div
+            className={`absolute -top-5.5 -left-16 ${loading ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}
+          >
             {/* Main Bubble */}
             <div
               className="relative flex items-center justify-center text-xs font-medium text-[var(--color-secondary-txt)] shadow-lg"

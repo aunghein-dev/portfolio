@@ -1,0 +1,179 @@
+> Educational Purpose Disclaimer: ⚠️ This project is for educational purposes only.
+> The data source is publicly accessible, and this demo is intended to demonstrate how to process and transform legacy sports data using serverless technology.
+> I do not host or promote betting services.
+
+---
+
+In the fast-paced world of football analytics, **data isn’t just important—it’s power**. For fans of Myanmar football, data-driven enthusiasts, and betting platform developers, access to real-time structured odds can unlock valuable insights.
+
+To tackle this challenge, I built a **serverless football odds API** using **Cloudflare Workers**, with the help of a **Google Apps Script proxy** to bypass CORS limitations. This API fetches Myanmar football match odds, processes legacy array-based data, and returns a clean, structured JSON—perfect for frontend consumption.
+
+## The Challenge
+
+The source of our data is a legacy odds endpoint:
+
+```link
+https://www.realty88.com/_view/MOddsGen2.ashx?ot=t&update=true&r=1392804364&ov=0&mt=0&LID=1
+```
+
+However, there are several issues:
+
+- ❌ CORS restrictions prevent browser access.
+- 🌀 The response is a non-standard JavaScript array, not JSON.
+- 🔄 Data updates frequently with inconsistent formatting.
+
+## The Solution: Serverless API + Proxy
+
+To solve this, I created two components:
+
+- Google Apps Script Proxy – acts as a CORS-free relay.
+- Cloudflare Worker – fetches, processes, formats, and serves the data via an authenticated endpoint.
+
+---
+
+## Step 1: Google Apps Script Proxy
+
+Browsers can't directly call the odds source due to CORS. So, I wrote a simple Google Apps Script that relays the request securely.
+
+```plaintext
+https://script.google.com/macros/s/AKfycbwHH9rJaXiQrBPDyPtRCgO0a2488gjDy_U_b1bZTOL2CfXM9vHNzjqxypOBQQZApLBr/exec?url=
+```
+
+---
+
+## Step 2: Cloudflare Worker – Odds Parser
+
+Here's the core of the Cloudflare Worker:
+
+```js
+const API_KEY = "your-secure-api-key";
+const proxyUrl = "https://script.google.com/macros/s/AKfycbw.../exec?url=";
+const apiUrlBase =
+  "https://www.realty88.com/_view/MOddsGen2.ashx?ot=t&update=true&r=1392804364&ov=0&mt=0&LID=";
+
+function addCacheBusting(url) {
+  return `${url}&_=${Date.now()}`;
+}
+
+async function fetchAndProcessData(apiUrl) {
+  const fullUrl = proxyUrl + encodeURIComponent(addCacheBusting(apiUrl));
+  const response = await fetch(fullUrl);
+  const cleaned = (await response.text()).replace(/'/g, '"');
+  const parsed = JSON.parse(cleaned);
+  return parsed[3]; // Extract matches
+}
+
+function formatOdds(num1, num2) {
+  const val = num2 / 100;
+  return num1 + (val >= 0 ? `+${val}` : val);
+}
+
+function subtract90Minutes(timeStr) {
+  const normalized = timeStr.replace(/(AM|PM)/, " $1").trim();
+  const [time, period] = normalized.split(" ");
+  let [hour, minute] = time.split(":").map(Number);
+
+  if (period === "PM" && hour !== 12) hour += 12;
+  if (period === "AM" && hour === 12) hour = 0;
+
+  let totalMinutes = hour * 60 + minute - 90;
+  if (totalMinutes < 0) totalMinutes += 1440;
+
+  let newHour = Math.floor(totalMinutes / 60);
+  let newMinute = totalMinutes % 60;
+  const newPeriod = newHour >= 12 ? "PM" : "AM";
+  newHour = newHour % 12 || 12;
+
+  return `${String(newHour).padStart(2, "0")}:${String(newMinute).padStart(2, "0")}${newPeriod}`;
+}
+
+async function prepareMatchAPIArray() {
+  const data = await fetchAndProcessData(apiUrlBase + "1");
+  const matches = [];
+
+  data.forEach(([leagueMeta, matchArray]) => {
+    matchArray.forEach((match) => {
+      const league = leagueMeta[1];
+      const valG = match[51] / 100;
+      const goalOdds = `${match[55]}${valG >= 0 ? `+${valG}` : valG}`;
+      const upperTeam = match[34] === 1 ? match[16] : match[20];
+      const time = subtract90Minutes(match[8]);
+      const bodyOdds = formatOdds(match[52], match[50]);
+
+      matches.push({
+        time,
+        league,
+        homeTeam: match[16],
+        awayTeam: match[20],
+        upperTeam,
+        goalOdds,
+        bodyOdds,
+      });
+    });
+  });
+
+  return matches;
+}
+
+export default {
+  async fetch(request) {
+    const { pathname, searchParams } = new URL(request.url);
+    if (pathname !== "/api/odds")
+      return new Response("Not Found", { status: 404 });
+
+    const providedKey = searchParams.get("apiKey");
+    if (providedKey !== API_KEY) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const matches = await prepareMatchAPIArray();
+    return new Response(JSON.stringify(matches), {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+  },
+};
+```
+
+---
+
+## Sample API Response
+
+```json
+[
+  {
+    "time": "01:30AM",
+    "league": "UEFA Champions League",
+    "homeTeam": "Barcelona",
+    "awayTeam": "Paris Saint-Germain",
+    "upperTeam": "Paris Saint-Germain",
+    "goalOdds": "3+20",
+    "bodyOdds": "0-50"
+  }
+]
+```
+
+---
+
+## Why It Matters
+
+- 🔥 Real-time odds
+- 🔐 API key secured access
+- 🌍 No CORS issues
+- 🛠️ Perfect for frontend integration (React, Vue, mobile apps)
+- ⚡ Fully serverless, fast, and low-maintenance
+
+This setup can empower developers to build analytics dashboards, live odds trackers, and smart betting tools—all without spinning up traditional servers or dealing with backend complexity.
+
+---
+
+## Final Thoughts
+
+This is a great example of how modern serverless infrastructure can work with legacy data in creative, efficient ways. Whether you're a frontend developer or a data nerd, building APIs like this is an excellent learning exercise in parsing, transformation, and secure delivery.
+
+Feel free to adapt the code, expand the formatting, or hook it into a live app. As always—build responsibly.

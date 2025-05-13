@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MySubHeading from "../typography/MySubHeading";
 import MyLink from "../typography/MyLink";
 import MyParagraph from "../typography/MyParagraph";
@@ -6,6 +6,12 @@ import ThemeButton from "../typography/ThemeButton";
 import { FiDownload } from "react-icons/fi";
 
 export default function AboutInfo() {
+  const [loading, setLoading] = useState(true);
+
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
+
   return (
     <section className="flex flex-col gap-5" id="about">
       <div className="flex flex-row items-center justify-between">
@@ -15,7 +21,6 @@ export default function AboutInfo() {
           target="_blank"
           to="/aunghein-cv-form-v1.pdf"
         >
-          {" "}
           CV Form
         </ThemeButton>
       </div>
@@ -55,10 +60,11 @@ export default function AboutInfo() {
             width="1280"
             height="533"
             decoding="async"
-            className="object-cover object-top h-full rounded-md"
+            className={`object-cover object-top h-full rounded-md transition-opacity duration-500 ${loading ? "opacity-0" : "opacity-100"}`}
             src="/profile.jpg"
             srcSet="/profile.jpg 1x, /profile.jpg 2x"
             style={{ color: "transparent" }}
+            onLoad={handleImageLoad}
           />
         </div>
         <figcaption
