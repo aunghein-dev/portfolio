@@ -51,7 +51,6 @@ function Me() {
                 height: "50px",
                 maxWidth: "140px",
                 padding: "0.5rem 1rem",
-                zIndex: 50,
               }}
             >
               <Doing
@@ -67,6 +66,7 @@ function Me() {
                   backgroundColor: "var(--color-surface)",
                   borderRadius: "0.1rem",
                   boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
+                  zIndex: "-1",
                 }}
               ></div>
             </div>

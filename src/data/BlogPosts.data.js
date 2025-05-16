@@ -1,5 +1,19 @@
 const PostsData = [
   {
+    title: "Building a Robust Java-Based Point of Sale (POS) System with MySQL Integration",
+    slug: "java-pos-architecture",  
+    description:
+      "Point of Sale (POS) system built with MySQL server integration using the MVC (Model-View-Controller) architecture",
+    date: "Oct 01, 2017",
+    readTime: "18 min read",
+    views: "10 views",
+    image:
+  "https://dcassetcdn.com/design_img/3987175/838431/27840556/a9qgtnr1h8321t4afggmzbxpk0_image.jpg",
+    tint: "rgb(184,202,59)",
+    tags: ["Java", "POS", "MySQL"],
+    author: "Aung Hein",
+  },
+  {
     title: "Football Myanmar Odds API",
     slug: "scraping-football-myanmar-odds",
     description:

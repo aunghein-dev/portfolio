@@ -39,6 +39,16 @@ const ProjectsData = [
     tint: "rgb(51,131,227)",
     releaseDate: "2025-01-30",
   },
+  {
+    title: "Point of Sale (POS)",
+    description: "Building a Robust Java-Based Point of Sale (POS) System with MySQL Integration",
+    stars: 12,
+    url: "https://github.com/aunghein-dev/pos-jar",
+    image:
+    "https://wmanth.gallerycdn.vsassets.io/extensions/wmanth/jar-viewer/1.2.0/1667579628731/Microsoft.VisualStudio.Services.Icons.Default",
+    tint: "rgb(251,131,4)",
+    releaseDate: "2017-10-01",
+  },
 
 ];
 

@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { posts } from "../components/MyBlogs/MyBlogs";
 import MDXLayout from "../components/MDXLayout";
-import { IoArrowBack } from "react-icons/io5";
+import { IoArrowBack, IoArrowUp } from "react-icons/io5";
 import MyLink from "../components/typography/MyLink";
 import MyParagraph from "../components/typography/MyParagraph";
 import Footer from "../components/Footer/Footer";
@@ -11,6 +11,8 @@ import ThemeButton from "../components/typography/ThemeButton";
 import Loading from "../components/Shared/Loading";
 
 const BlogPost = () => {
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+
   const { slug } = useParams();
   const [mdxContent, setMdxContent] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,6 +42,13 @@ const BlogPost = () => {
       setError("Post not found");
       setLoading(false);
     }
+
+    const handleScroll = () => {
+      setShowScrollToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [slug, post]);
 
   if (loading) {
@@ -70,7 +79,7 @@ const BlogPost = () => {
         <div
           className="absolute bottom-0 left-0 right-0 h-40"
           style={{
-            background: "var( --color-blog-image-gradient)",
+            background: "var(--color-blog-image-gradient)",
           }}
         />
       </figure>
@@ -149,6 +158,20 @@ const BlogPost = () => {
           <Footer />
         </div>
       </div>
+
+      {showScrollToTop && (
+        <button
+          style={{
+            bottom: "2rem",
+            right: "calc((100vw - 630px) / 2)", // aligns to the right edge of the 700px body
+          }}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed z-50 p-3  bg-[var(--color-surface)] hover:bg-[var(--color-surface-variant)] rounded-md transition-all ease-in-out duration-200 text-[var(--color-accent)]"
+          title="Scroll to top"
+        >
+          <IoArrowUp size={20} />
+        </button>
+      )}
     </div>
   );
 };
