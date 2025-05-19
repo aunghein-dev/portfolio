@@ -1,5 +1,3 @@
-import React from "react";
-
 export const getActivity = (time, isPm, isWeekend) => {
   const actualTime = Number(time);
   if (!isPm) {
