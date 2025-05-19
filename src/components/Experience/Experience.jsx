@@ -13,7 +13,7 @@ export default function Experience() {
     {
       title: "Junior Database Administrator",
       company: "TuTu Micro Finance - Myanmar",
-      duration: "May 2022 – Dec 2023",
+      duration: "May 2021 – Dec 2023",
       companyLink:
         "https://www.woorifg.com/eng/company/network/global/contentsid/171/index.do",
       companyLogo: "/tutu.jpg".replace("&amp;", "&"),
