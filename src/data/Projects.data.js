@@ -1,5 +1,14 @@
 const ProjectsData = [
   {
+    title: "Green Market UI",
+    description: "Green Market UI is a sleek, animated, and responsive React frontend for a modern plant e-commerce website, built with Vite and styled with Tailwind CSS and Framer Motion.",
+    stars: 3,
+    url: "https://github.com/aunghein-dev/green-market-ui",
+    image: "https://github.com/aunghein-dev/green-market-ui/blob/main/public/plantlogo.png?raw=true",
+    tint: "rgb(119,185,109)", 
+    releaseDate: "2025-05-23",
+  },
+  {
     title: "Football Live Streaming Api",
     description: "Football Live Streaming Api is a serverless API built with Cloudflare Workers",
     stars: 2,
