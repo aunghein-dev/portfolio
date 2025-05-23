@@ -76,24 +76,24 @@ export default function FeaturedProjects() {
                 "--tint-border": `${project.tint.replace("rgb", "rgba").replace(")", ", 0.4)")}`,
               }}
             >
-              <img
-                alt={`Icon for project "${project.title}"`}
-                width={56}
-                height={56}
-                className="object-center 
-                           rounded-md p-2 
-                           transition-all 
-                           aspect-square 
-                           object-center
-                           object-cover 
-                           bg-[var(--tint-bg)] 
-                           group-hover/project:p-1 
-                           group-hover/project:saturate-125 
-                           group-hover/project:bg-transparent 
-                           group-hover/project:drop-shadow-
-                           [0_1px_1px_var(--tint-bg)]"
-                src={project.image}
-              />
+             <img
+              alt={`Icon for project "${project.title}"`}
+              width={56}
+              height={56}
+              className="object-center 
+                rounded-md p-2 
+                transition-all 
+                aspect-square 
+                object-cover 
+                bg-[var(--tint-bg)] 
+                group-hover/project:p-1 
+                group-hover/project:saturate-125 
+                group-hover/project:bg-transparent 
+                group-hover/project:drop-shadow-[0_1px_1px_var(--tint-bg)]
+                bg-gray-200 animate-pulse"
+              src={project.image}
+              loading="lazy"
+            />
               <div className="flex flex-col gap-1">
                 <div className="flex flex-row gap-3 items-center">
                   <p
