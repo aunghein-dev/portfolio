@@ -1,4 +1,24 @@
 const ProjectsData = [
+
+  {
+    title: "Stock Management System (Next.js-Frontend)",
+    description: "A full-stack web application built with Next.js, SpringBoot, and PostgreSQL, featuring user authentication, product management, order processing and reporting, and robust backend support for efficient data management and secure transactions.",
+    stars: 6,
+    url: "https://github.com/aunghein-dev/frontend_stocksManagement",
+    image: "https://github.com/aunghein-dev/frontend_stocksManagement/blob/main/public/applogo.png?raw=true",
+    tint: "rgb(25,74,142)", 
+    releaseDate: "2025-06-27",
+  },
+
+  {
+    title: "Stock Management (SpringBoot-Backend)",
+    description: "A spring boot backend for a stock management system, including user authentication, product management, order processing, and robust data management for efficient transactions and reporting.",
+    stars: 6,
+    url: "https://github.com/aunghein-dev/frontend_stocksManagement",
+    image: "https://github.com/aunghein-dev/frontend_stocksManagement/blob/main/public/onlylogo.png?raw=true",
+    tint: "rgb(96,174,247)", 
+    releaseDate: "2025-06-27",
+  },
   {
     title: "Green Market UI",
     description: "Green Market UI is a sleek, animated, and responsive React frontend for a modern plant e-commerce website, built with Vite and styled with Tailwind CSS and Framer Motion.",

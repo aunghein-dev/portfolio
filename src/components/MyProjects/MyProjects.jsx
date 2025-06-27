@@ -54,7 +54,6 @@ export default function MyProjects() {
                 rounded-md p-2 
                 transition-all 
                 aspect-square 
-                object-center
                 object-cover 
                 bg-[var(--tint-bg)] 
                 group-hover/project:p-1 

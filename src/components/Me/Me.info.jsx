@@ -12,7 +12,7 @@ export default function MeInfo() {
       </div>
 
       <div className="info-box mt-2">
-        <span className="flex flex-row items-center gap-2 text-shadow shadow-brand-300 dark:shadow-transparent">
+        <span className="flex flex-row items-center gap-2 text-shadow shadow-brand-300">
           <span className="me text-[1.7rem] mt-0.5">
             I am <span className="my-name">Aung Hein</span>
           </span>

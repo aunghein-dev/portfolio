@@ -16,7 +16,7 @@ export default function SocialLinks({ extended = "" }) {
               rel="noopener noreferrer"
               className={clsx(
                 "font-medium flex items-center justify-center min-h-10 min-w-10 p-1.5 rounded-md no-underline transition-all",
-                "bg-transparent text-neutral-800 dark:text-[var(--color-primary-txt)]",
+                "bg-transparent text-[var(--color-primary-txt)]",
                 hocusColor
               )}
             >

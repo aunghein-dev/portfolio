@@ -9,7 +9,7 @@ const activityData = [
     creator: "Daniel Cavalcante",
     link: "https://z-library.co/book/18149025",
     image: "https://z-library.co/images/18100000/18149025.webp",
-    backgroundClass: "bg-white/10 dark:bg-brand-800/15",
+    backgroundClass: "bg-white/10",
     isMusic: false,
   },
 ];
@@ -47,7 +47,7 @@ export default function Activity() {
             creator: data.track.artist,
             link: data.track.url,
             image: data.track.cover,
-            backgroundClass: "bg-white/10 dark:bg-brand-800/15",
+            backgroundClass: "bg-white/10",
             isMusic: true,
           };
           setDynamicActivityData([musicActivity, ...activityData]);
