@@ -13,7 +13,7 @@ const ProjectsData = [
   {
     title: "Backend eCommerce Stock Manager",
     description: "A spring boot backend for eCommerce Stock Manager, including user authentication, product management, order processing, and robust data management for efficient transactions and reporting.",
-    stars: 6,
+    stars: 9,
     url: "https://github.com/aunghein-dev/backend_stocksManagement",
     image: "https://github.com/aunghein-dev/frontend_stocksManagement/blob/main/public/onlylogo.png?raw=true",
     tint: "rgb(96,174,247)", 
