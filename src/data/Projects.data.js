@@ -1,8 +1,8 @@
 const ProjectsData = [
 
   {
-    title: "Stock Management System (Next.js-Frontend)",
-    description: "A full-stack web application built with Next.js, SpringBoot, and PostgreSQL, featuring user authentication, product management, order processing and reporting, and robust backend support for efficient data management and secure transactions.",
+    title: "eCommerce Stock Manager",
+    description: "An eCommerce Stock Manager built with Next.js, SpringBoot, and PostgreSQL, featuring user authentication, product management, order processing and reporting, and robust backend support for efficient data management and secure transactions.",
     stars: 6,
     url: "https://github.com/aunghein-dev/frontend_stocksManagement",
     image: "https://github.com/aunghein-dev/frontend_stocksManagement/blob/main/public/applogo.png?raw=true",
@@ -11,10 +11,10 @@ const ProjectsData = [
   },
 
   {
-    title: "Stock Management (SpringBoot-Backend)",
-    description: "A spring boot backend for a stock management system, including user authentication, product management, order processing, and robust data management for efficient transactions and reporting.",
+    title: "Backend eCommerce Stock Manager",
+    description: "A spring boot backend for eCommerce Stock Manager, including user authentication, product management, order processing, and robust data management for efficient transactions and reporting.",
     stars: 6,
-    url: "https://github.com/aunghein-dev/frontend_stocksManagement",
+    url: "https://github.com/aunghein-dev/backend_stocksManagement",
     image: "https://github.com/aunghein-dev/frontend_stocksManagement/blob/main/public/onlylogo.png?raw=true",
     tint: "rgb(96,174,247)", 
     releaseDate: "2025-06-27",
