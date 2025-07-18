@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Aung Hein Thant Blog</title>
+    <link>http://localhost:5173/</link>
+    <description>Latest posts by Aung Hein Thant</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Jun 2025 03:41:57 GMT</lastBuildDate>
+    
+  <item>
+    <title>Building a Robust Java-Based Point of Sale (POS) System with MySQL Integration</title>
+    <link>http://localhost:5173//posts/java-pos-architecture</link>
+    <guid>http://localhost:5173//posts/java-pos-architecture</guid>
+    <pubDate>Sat, 30 Sep 2017 17:30:00 GMT</pubDate>
+    <description><![CDATA[Point of Sale (POS) system built with MySQL server integration using the MVC (Model-View-Controller) architecture]]></description>
+  </item>
+
+  <item>
+    <title>Football Myanmar Odds API</title>
+    <link>http://localhost:5173//posts/scraping-football-myanmar-odds</link>
+    <guid>http://localhost:5173//posts/scraping-football-myanmar-odds</guid>
+    <pubDate>Mon, 12 May 2025 17:30:00 GMT</pubDate>
+    <description><![CDATA[Building a Serverless Football Myanmar Odds API with Cloudflare Worker & Google Script]]></description>
+  </item>
+
+  <item>
+    <title>Football Live Streaming API</title>
+    <link>http://localhost:5173//posts/football-streaming-api-worker</link>
+    <guid>http://localhost:5173//posts/football-streaming-api-worker</guid>
+    <pubDate>Sun, 11 May 2025 17:30:00 GMT</pubDate>
+    <description><![CDATA[Live streaming API using Cloudflare Workers, including handling CORS]]></description>
+  </item>
+
+  <item>
+    <title>SQL JOIN Optimization: Best Practices for Efficient Queries</title>
+    <link>http://localhost:5173//posts/sql-join-optimization</link>
+    <guid>http://localhost:5173//posts/sql-join-optimization</guid>
+    <pubDate>Tue, 07 May 2024 17:30:00 GMT</pubDate>
+    <description><![CDATA[Efficient SQL JOIN queries with indexing strategies, query rewriting, and performance analysis tools.]]></description>
+  </item>
+
+  <item>
+    <title>Why Java is the Perfect Starting Point for New Programmers</title>
+    <link>http://localhost:5173//posts/java-beginner</link>
+    <guid>http://localhost:5173//posts/java-beginner</guid>
+    <pubDate>Sat, 03 Feb 2024 17:30:00 GMT</pubDate>
+    <description><![CDATA[Java remains one of the most recommended programming languages for beginners.]]></description>
+  </item>
+
+  </channel>
+</rss>

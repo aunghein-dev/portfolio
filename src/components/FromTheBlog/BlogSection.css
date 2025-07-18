@@ -1,0 +1,10 @@
+
+
+.btn-container{
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  align-items: center;
+  text-align: center;
+}
+

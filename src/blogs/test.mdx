@@ -1,0 +1,28 @@
+# Hello MDX
+
+This is a <span style={{ color: 'red', fontWeight: 'bold' }}>test blog post</span>.
+
+## Inline Styled Image
+
+<img
+  src="https://images.pexels.com/photos/31861405/pexels-photo-31861405/free-photo-of-elegant-sailboat-in-monochrome-by-granite-wall.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  alt="Sailboat"
+  style={{
+    borderRadius: "8px",
+    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+    maxWidth: "100%",
+  }}
+/>
+
+## Inline Styled Blockquote
+
+> Server Functions allow Client Components to call async functions executed on the server.  
+> […]  
+> When that function is called on the client, React will send a request to the server to execute the function and return the result.
+
+```javascript
+function sayHello(name) {
+  console.log(`Hello, ${name}!`);
+}
+sayHello("World");
+```

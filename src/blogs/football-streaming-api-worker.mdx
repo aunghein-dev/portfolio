@@ -1,0 +1,182 @@
+import MyCode from "../components/typography/MyCode.jsx";
+
+> Disclaimer: This API is built for educational and demonstration purposes only. It scrapes publicly available football data and should not be used in production without proper licensing or permission.
+
+# Building a Football Live Streaming API with Cloudflare Workers
+
+In this tutorial, you'll learn how to create a fast and secure football match streaming API using Cloudflare Workers. We'll cover how to fetch match data from a third-party JSONP endpoint, handle CORS securely, parse the response, and return a structured JSON format including live stream links for frontend consumption.
+
+---
+
+## What You’ll Learn
+
+- How to build serverless APIs using Cloudflare Workers
+- How to parse JSONP-style responses safely
+- How to implement strict CORS policies and origin whitelisting
+- How to aggregate match data across multiple days
+- How to extract and structure live streaming URLs
+
+---
+
+## Tech Stack
+
+- Cloudflare Workers – serverless compute platform
+- JavaScript (ES6+)
+- Regular Expression-based JSONP Parsing
+- CORS Headers & Request Validation
+
+---
+
+## Worker Logic Overview
+
+The following code outlines the core functionality of our API Worker.
+
+```js
+const ALLOWED_ORIGIN = "https://localhost:3000";
+
+addEventListener("fetch", (event) => {
+  event.respondWith(handleRequest(event.request).catch(handleError));
+});
+```
+
+We restrict requests to a specific frontend origin to prevent abuse and enable CORS-controlled access.
+
+```js
+async function handleRequest(request) {
+  const url = new URL(request.url);
+  const origin = request.headers.get("Origin");
+
+  // CORS & Origin Check
+  if (origin !== ALLOWED_ORIGIN) {
+    return new Response(JSON.stringify({ error: "Forbidden" }), {
+      status: 403,
+      headers: { "Access-Control-Allow-Origin": "null" },
+    });
+  }
+
+  // Preflight CORS Support
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      headers: {
+        "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "*",
+      },
+    });
+  }
+
+  // Path validation
+  if (!["/matches", "/matches/"].includes(url.pathname)) {
+    return new Response("Not Found", {
+      status: 404,
+      headers: { "Access-Control-Allow-Origin": ALLOWED_ORIGIN },
+    });
+  }
+
+  const referer = "https://socolivev.co/";
+  const agent = request.headers.get("user-agent") || "Custom-Agent";
+
+  const dates = [
+    formatDate(Date.now() - 86400000),
+    formatDate(Date.now()),
+    formatDate(Date.now() + 86400000),
+  ];
+
+  let allMatches = [];
+  for (const date of dates) {
+    const matches = await fetchMatches(date, referer, agent);
+    allMatches = allMatches.concat(matches);
+  }
+
+  return new Response(JSON.stringify(allMatches, null, 2), {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
+    },
+  });
+}
+```
+
+---
+
+## How Match Fetching Works
+
+We collect match data from a third-party endpoint <MyCode>json.vnres.co</MyCode>, which returns a JSONP-wrapped response like <MyCode>matches_20250512(...)</MyCode>. To parse it, we use:
+
+```js
+const txt = await res.text();
+const match = txt.match(/matches_\d+\((.*)\)/);
+const data = JSON.parse(match[1]);
+```
+
+After parsing, we evaluate each match's status and selectively fetch streaming links only for live matches:
+
+```js
+const { m3u8, hdM3u8 } = await fetchServerURL(roomNum);
+```
+
+This makes an internal call to:
+
+```js
+https://json.vnres.co/room/${roomNum}/detail.json
+```
+
+---
+
+## Final JSON Response Format
+
+Our API returns structured data in the following format:
+
+```json
+{
+  "match_time": "1715527200",
+  "match_status": "live",
+  "home_team_name": "Team A",
+  "away_team_name": "Team B",
+  "league_name": "Premier League",
+  "match_score": "2 - 1",
+  "servers": [
+    {
+      "name": "Soco SD",
+      "stream_url": "https://cdn1.example/hls.m3u8",
+      "referer": "https://socolivev.co/"
+    },
+    {
+      "name": "Soco HD",
+      "stream_url": "https://cdn1.example/hd.m3u8",
+      "referer": "https://socolivev.co/"
+    }
+  ]
+}
+```
+
+## CORS and Security Considerations
+
+To enforce secure usage, we explicitly set:
+
+```js
+"Access-Control-Allow-Origin": ALLOWED_ORIGIN
+```
+
+## You can extend this to support multiple domains by maintaining a whitelist and validating the incoming origin header accordingly.
+
+---
+
+## Deploying to Cloudflare Workers
+
+- Sign up at [Cloudflare Workers](https://workers.cloudflare.com)
+- Install the Wrangler CLI and publish:
+
+```bash
+npm install -g wrangler
+wrangler init
+wrangler publish
+```
+
+- Set environment variables or domain binding as needed.
+
+---
+
+## Conclusion
+
+By using Cloudflare Workers, we’ve created a lightweight, scalable, and secure proxy API to aggregate football match data and stream URLs. This architecture is ideal for frontend apps that require real-time match information with minimal backend overhead.

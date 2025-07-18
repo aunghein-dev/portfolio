@@ -1,0 +1,466 @@
+import MyCode from "../components/typography/MyCode.jsx";
+
+In today’s fast-paced retail environment, having a reliable and efficient Point of Sale (POS) system is essential for smooth operations and accurate sales tracking. I recently developed a full-featured Java-based POS system integrated with MySQL using the MVC (Model-View-Controller) architecture. This project leverages GUI for an intuitive user experience and robust backend support for managing sales, inventory, customers, and reports.
+
+![Dashboard with exportable via excel (Screenshoot-6)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.41.40%E2%80%AFAM.png)
+
+---
+
+## Why Build a Java-Based POS System?
+
+Many retail businesses require a tailored POS solution that can integrate seamlessly with their database and offer custom workflows. Java, with its platform independence and strong ecosystem, is a perfect fit for such desktop applications. Combining it with MySQL for backend data storage allows for scalable and reliable management of sales transactions and inventory.
+
+---
+
+## Core Features
+
+This POS system comes packed with features to cover the essential needs of a retail business:
+
+- **User Authentication** : Secure login ensures only authorized personnel can access and operate the system.
+- **Sales Management** : Quickly process transactions by adding products, applying discounts, and generating printable invoices.
+- **Inventory Control** : Monitor stock levels in real-time, add or remove items, and update quantities effortlessly.
+- **Customer Database**: Manage customer information to support loyalty programs and personalized marketing.
+- **Reporting** : Generate insightful reports on sales performance, inventory status, and customer activity — exportable to Excel for further analysis.
+- **Additional Functionalities** :
+  - Barcode generation within the app to streamline scanning processes.
+  - Batch import of stock items via Excel for bulk updates.
+  - Business expense tracking integrated with daily transactions.
+
+---
+
+## Technologies Used
+
+- **GUI** : For building the graphical user interface (GUI).
+- **MySQL** : Database management system for storing and retrieving data.
+- **MVC Architecture** : Organizes the codebase into Model, View, and Controller components for better maintainability and scalability.
+- **JDBC (Java Database Connectivity)** : API for connecting Java applications to relational databases like MySQL.
+- **Validation** : Implement robust validation mechanisms to ensure data integrity and prevent errors.
+
+---
+
+## UI Preview
+
+![Home (Screenshot-1)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.37.17%E2%80%AFAM.png)
+
+![Vouncher Preview (Screenshot-3)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.39.26%E2%80%AFAM.png)
+
+![Cashier Activity (Screenshoot-4)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.40.03%E2%80%AFAM.png)
+
+![Bussiness Expense Allocation with everyday transactions (Screenshoot-9)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.43.07%E2%80%AFAM.png)
+
+![In App Barcode Generator (Screenshoot-10)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.44.19%E2%80%AFAM.png)
+
+---
+
+## Installation
+
+### Clone the repository:
+
+```bash
+git clone https://github.com/aunghein-dev/pos-jar.git
+```
+
+### Set up the database:
+
+- Install MySQL server /or MariaDb as you prefered.
+- Create a new database named posdb.
+- Import the SQL schema for
+  [MariaDB](https://github.com/aunghein-dev/pos-jar/blob/main/mariadb-pos-bak.sql),
+  or [MySQL](https://github.com/aunghein-dev/pos-jar/blob/main/mysql-pos-bak.sql).
+
+### Configure database connection:
+
+- Update the database connection [src/main/resources/config.properties](https://github.com/aunghein-dev/pos-jar/blob/main/src/main/resources/config.properties)
+  with your db informations.
+- Update JDBC for specific Mariadb or MySQL as you used.
+
+### Build and run:
+
+- Open the project in your favorite Java IDE.
+- Build and run the project.
+
+### Usage
+
+- **Login** : Enter with admin user (username : admin , password : admin)
+
+- **Navigate** : Use the menu options to navigate between different sections such as sales, inventory, and customers.
+
+- **Perform actions** : Add new items, process sales, update inventory, and manage customer information as needed.
+
+- **Generate reports** : Utilize the reporting functionality to gain insights into business performance.
+
+---
+
+## Stored Procedures Overview
+
+To ensure efficient, atomic transactions and encapsulate complex business logic directly within the database layer, I implemented custom stored procedures. These handle critical operations such as order creation, cancellation, and stock updates.
+
+Let’s break down the logic behind one of the key stored procedures:
+
+### <MyCode noBackticks>sp_CreateOrder</MyCode> — Smart & Safe Order Processing
+
+![Checkout (Screenshot-2)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.38.48%E2%80%AFAM.png)
+
+This procedure handles the entire order creation flow, ensuring:
+
+- Atomicity: Uses transactions to prevent inconsistent state.
+- Stock validation: Verifies stock availability before finalizing orders.
+- Custom order code generation: Avoids duplicates even in concurrent environments.
+- Customer data updates: Tracks total purchases for loyalty programs.
+
+### What It Does:
+
+- Inserts a new order.
+- Loops through each item in the order JSON array.
+- Checks stock availability.
+- Updates stock quantity.
+- Logs order details in <MyCode noBackticks>Order_Hist</MyCode>.
+- Optionally updates the customer's total purchases.
+- Updates daily transaction counts.
+
+### Key Concepts Used:
+
+- JSON processing with <MyCode noBackticks>JSON_EXTRACT</MyCode> to handle order items.
+- Transactions (<MyCode noBackticks>START TRANSACTION</MyCode>, <MyCode noBackticks>COMMIT</MyCode>, <MyCode noBackticks>ROLLBACK</MyCode>) to ensure data consistency.
+- Conditional logic (like <MyCode noBackticks>IF p_DineInToGoDelivery != 'Dine In'</MyCode>) to dynamically adjust behavior.
+- UUID-based fallback to ensure unique <MyCode noBackticks>OrderCode</MyCode>.
+
+### Why It Matters:
+
+Storing and processing this logic inside MySQL speeds up operations, reduces application logic overhead, and enforces data integrity at the database level.
+
+```sql
+-- sp_CreateOrder.sql
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS sp_CreateOrder $$
+CREATE PROCEDURE `sp_CreateOrder`(IN p_TableName varchar(255), IN p_NewOrderCode varchar(255),
+                                               IN p_OrderItems longtext, IN p_DineInToGoDelivery varchar(255),
+                                               IN p_TellerID int, IN p_CID varchar(4))
+BEGIN
+    DECLARE v_OrderID INT;
+    DECLARE i INT DEFAULT 0;
+    DECLARE len INT;
+    DECLARE orderItem JSON;
+    DECLARE stockAvailable INT;
+    DECLARE done BOOLEAN DEFAULT FALSE;
+    DECLARE newOrderCode VARCHAR(255);
+    DECLARE codeExists INT DEFAULT 1;
+    DECLARE oneItemOriginalPrice DECIMAL(10, 2);
+    DECLARE grandTotal DECIMAL(10, 2) DEFAULT 0.00; -- Initialize grand total
+    DECLARE itemTotal DECIMAL(10, 2); -- Store the subtotal for each item
+    DECLARE pre_purchased DECIMAL(10, 2);
+
+    -- Start a transaction
+    START TRANSACTION;
+
+    SET pre_purchased =
+            IF(p_CID IS NOT NULL,
+               (SELECT COALESCE(PurchasedGrandTotal, 0) FROM Customer_Lists WHERE CID = p_CID),
+               0);
+
+    -- Check if the OrderCode already exists
+    SET newOrderCode = p_NewOrderCode;
+    WHILE codeExists > 0
+        DO
+            SELECT COUNT(*)
+            INTO codeExists
+            FROM Order_Lists
+            WHERE OrderCode = newOrderCode;
+
+            -- If OrderCode exists, generate a new unique OrderCode
+            IF codeExists > 0 THEN
+                SET newOrderCode = CONCAT(p_NewOrderCode, '-', UUID_SHORT());
+            END IF;
+        END WHILE;
+
+    -- Update Table_Lists
+    UPDATE Table_Lists
+    SET TableCurrentStatus   = 'O',
+        StartTime            = NOW(),
+        EndTime              = NULL,
+        CancelYN             = 'N',
+        TempCacheYN          = 'N',
+        CurrentOrderCode     = newOrderCode,
+        CurrentOrderFinishYN = 'N'
+    WHERE TableName = p_TableName;
+
+    IF p_DineInToGoDelivery != 'Dine In' THEN
+        -- Insert into Order_Lists with EndDate set to current timestamp
+        INSERT INTO Order_Lists (OrderCode, CancelYN, OrderFinish, StartDate, EndDate, TableName, DineInToGoDelivery,
+                                 OpenedCashier, CustomerID)
+        VALUES (newOrderCode, 'N', 'N', NOW(),
+                NOW(), p_TableName,
+                p_DineInToGoDelivery, p_TellerID, p_CID);
+    ELSE
+        -- Insert into Order_Lists with EndDate set to NULL
+        INSERT INTO Order_Lists (OrderCode, CancelYN, OrderFinish, StartDate, EndDate, TableName, DineInToGoDelivery,
+                                 OpenedCashier, CustomerID)
+        VALUES (newOrderCode, 'N', 'N', NOW(), NULL,
+                p_TableName, p_DineInToGoDelivery, p_TellerID, p_CID);
+    END IF;
+
+    -- Get the last inserted OrderID
+    SET v_OrderID = LAST_INSERT_ID();
+
+    -- Initialize variables for JSON processing
+    SET len = JSON_LENGTH(p_OrderItems);
+
+    -- Process each item in the JSON array
+    order_loop:
+    WHILE i < len
+        DO
+            -- Extract order item details
+            SET orderItem = JSON_EXTRACT(p_OrderItems, CONCAT('$[', i, ']'));
+
+            -- Check if stock is available
+            SELECT Stock_Available_Cnt
+            INTO stockAvailable
+            FROM Food_Lists
+            WHERE Food_Name = JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderFood'));
+
+            IF stockAvailable >= JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderQty')) THEN
+
+                -- Get the original price of the item
+                SET oneItemOriginalPrice = (SELECT Food_Original_Price
+                                            FROM Food_Lists
+                                            WHERE Food_Name = JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderFood')));
+
+                -- Calculate the item's subtotal
+                SET itemTotal = JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderSubTotal'));
+
+                -- Accumulate the grand total
+                SET grandTotal = grandTotal + itemTotal;
+
+                -- Insert into Order_Hist
+                INSERT INTO Order_Hist (OrderID,
+                                        OrderCode,
+                                        OrderFood,
+                                        OrderQty,
+                                        OrderSubTotal,
+                                        OrderPrice1Qty,
+                                        OrderNote,
+                                        OriginalSubTotal)
+                VALUES (v_OrderID,
+                        newOrderCode,
+                        JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderFood')),
+                        JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderQty')),
+                        itemTotal,
+                        JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderPrice1Qty')),
+                        JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderNote')),
+                        oneItemOriginalPrice * JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderQty')));
+
+                -- Update Food_Lists stock
+                UPDATE Food_Lists
+                SET Stock_Available_Cnt = Stock_Available_Cnt - JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderQty'))
+                WHERE Food_Name = JSON_UNQUOTE(JSON_EXTRACT(orderItem, '$.OrderFood'));
+
+            ELSE
+                -- Rollback the transaction if stock is insufficient
+                ROLLBACK;
+                SET done = TRUE;
+                LEAVE order_loop;
+            END IF;
+
+            SET i = i + 1;
+        END WHILE;
+
+    IF p_CID IS NOT NULL THEN
+        UPDATE Customer_Lists
+        SET PurchasedGrandTotal = pre_purchased + grandTotal
+        WHERE CID = p_CID;
+    END IF;
+
+                    -- Check if the record for today's date exists
+    IF EXISTS (SELECT * FROM db_trn_count WHERE trn_date = CURDATE() LIMIT 1) THEN
+        -- If exists, update the count
+        UPDATE db_trn_count
+        SET update_cnt = update_cnt + 1
+        WHERE trn_date = CURDATE();
+    ELSE
+        -- If not exists, insert a new record with initial count of 1
+        INSERT INTO db_trn_count (trn_date, update_cnt)
+        VALUES (CURDATE(), 1);
+    END IF;
+
+    -- Commit the transaction if no issues
+    IF NOT done THEN
+        COMMIT;
+    END IF;
+
+END $$
+DELIMITER ;
+```
+
+---
+
+## <MyCode noBackticks>sp_CancelOrder</MyCode> — Clean Rollbacks for Mistaken Orders
+
+![Transaction Editable (Screenshoot-5)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.41.07%E2%80%AFAM.png)
+
+This stored procedure cancels an active order and restores stock counts, ensuring no inventory mismatches after order cancellation.
+
+### What It Does:
+
+- Sets <MyCode noBackticks>Order_Lists</MyCode> status to cancelled.
+- Updates table status to available again.
+- Iterates through <MyCode noBackticks>Order_Hist</MyCode> items.
+- Restores product quantities back to stock.
+
+### Benefits:
+
+- Ensures stock is returned only when an order is properly cancelled.
+- Maintains accurate historical logs for auditing.
+- Makes rollback fast, safe, and user-triggerable.
+
+```sql
+-- sp_CancelOrder.sql
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS sp_CancelOrder $$
+CREATE PROCEDURE `sp_CancelOrder`(
+    IN p_CancelOrderCode VARCHAR(255),
+    IN p_TellerID INT,
+    IN p_TableName VARCHAR(10),
+    IN p_TaxPercentage DECIMAL(5,2)
+)
+BEGIN
+    DECLARE v_grandTotalOfOrder DECIMAL(10, 2) DEFAULT 0.00;
+    DECLARE v_pre_purchased DECIMAL(10, 2);
+    DECLARE v_CID VARCHAR(5);
+    DECLARE v_OrderFood VARCHAR(255);
+    DECLARE v_OrderQty INT;
+    DECLARE done BOOLEAN DEFAULT FALSE;
+    DECLARE v_DrawerReductionAmt DECIMAL(10, 2);
+
+    -- Declare cursor to iterate through Order_Hist items for the order
+    DECLARE order_cursor CURSOR FOR
+        SELECT OrderFood, OrderQty
+        FROM Order_Hist
+        WHERE OrderCode = p_CancelOrderCode;
+
+    -- Handler to set done to TRUE when there are no more rows
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    -- Error handler for rolling back the transaction on error
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+    END;
+
+    -- Start a transaction
+    START TRANSACTION;
+
+    -- Retrieve CustomerID for the order
+    SET v_CID = (SELECT CustomerID FROM Order_Lists WHERE OrderCode = p_CancelOrderCode);
+
+    -- Calculate grand total from order history
+    SET v_grandTotalOfOrder = (SELECT COALESCE(SUM(OrderSubTotal), 0) FROM Order_Hist WHERE OrderCode = p_CancelOrderCode);
+
+    -- Check previous purchases if CustomerID exists
+    SET v_pre_purchased = IF(v_CID IS NOT NULL,
+                             (SELECT COALESCE(PurchasedGrandTotal, 0) FROM Customer_Lists WHERE CID = v_CID),
+                             0);
+
+    SET v_DrawerReductionAmt = COALESCE((SELECT TaxAmt + OrderPayableAmt FROM Cashier_Hist WHERE OrderCode = p_CancelOrderCode AND PaymentMethod = 'Cash'), 0);
+
+    UPDATE ClaimableDrawer
+    SET CashSalesAmount = CashSalesAmount - v_DrawerReductionAmt,
+        UpdatedAt = NOW()
+    WHERE TellerID = p_TellerID;
+
+    -- Update Table_Lists if p_TableName is provided
+    IF p_TableName IS NOT NULL THEN
+        UPDATE Table_Lists
+        SET TableCurrentStatus   = 'V',
+            StartTime            = NULL,
+            EndTime              = NULL,
+            CancelYN             = 'N',
+            TempCacheYN          = 'N',
+            CurrentOrderCode     = NULL,
+            CurrentOrderFinishYN = 'N'
+        WHERE TableName = p_TableName;
+    END IF;
+
+    -- Update stock for each item in the order
+    OPEN order_cursor;
+
+    read_loop: LOOP
+        FETCH order_cursor INTO v_OrderFood, v_OrderQty;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Update stock for each food item by adding back the ordered quantity
+        UPDATE Food_Lists
+        SET Stock_Available_Cnt = Stock_Available_Cnt + v_OrderQty
+        WHERE Food_Name = v_OrderFood;
+    END LOOP;
+
+    CLOSE order_cursor;
+
+    -- Update Order_Lists and delete from Order_Hist if OrderCode is provided
+    IF p_CancelOrderCode IS NOT NULL THEN
+        UPDATE Order_Lists
+        SET CancelYN = 'Y',
+            OrderFinish = 'Y',
+            EndDate = NOW(),
+            OrderClosingBalance = 0,
+            ClosedCashier = p_TellerID
+        WHERE OrderCode = p_CancelOrderCode;
+
+        DELETE FROM Order_Hist
+        WHERE OrderCode = p_CancelOrderCode;
+    END IF;
+
+    -- Update Customer_Lists if CustomerID exists
+    IF v_CID IS NOT NULL THEN
+        UPDATE Customer_Lists
+        SET PurchasedGrandTotal = v_pre_purchased - v_grandTotalOfOrder
+        WHERE CID = v_CID;
+    END IF;
+
+    -- Check if the record for today's date exists
+    IF EXISTS (SELECT * FROM db_trn_count WHERE trn_date = CURDATE() LIMIT 1) THEN
+        -- If exists, update the count
+        UPDATE db_trn_count
+        SET update_cnt = update_cnt + 1
+        WHERE trn_date = CURDATE();
+    ELSE
+        -- If not exists, insert a new record with initial count of 1
+        INSERT INTO db_trn_count (trn_date, update_cnt)
+        VALUES (CURDATE(), 1);
+    END IF;
+
+
+    -- Commit the transaction if no issues
+    COMMIT;
+END $$
+DELIMITER ;
+```
+
+---
+
+## Why Use Stored Procedures for POS?
+
+![Backend Stock Management (Screenshoot-7)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.42.17%E2%80%AFAM.png)
+
+![Stock Items Mutiple Upload via excel (Screenshoot-8)](https://raw.githubusercontent.com/aunghein-dev/pos-jar/main/screenshots/Screenshot%202025-05-16%20at%209.42.38%E2%80%AFAM.png)
+
+- **Performance** : Executes faster since logic stays close to data.
+- **Maintainability**: Centralized logic reduces code duplication across your Java backend.
+- **Security**: Minimizes SQL injection risks with predefined execution paths.
+- **Scalability**: Easier to optimize and update as business logic grows.
+
+---
+
+# Conclusion
+
+Developing this POS system was a rewarding experience, combining desktop Java development, database design, and business logic implementation. It showcases how traditional Java applications can still offer robust, enterprise-ready solutions with thoughtful architecture and strong backend integration.
+
+Feel free to explore the source code or contribute on [GitHub](https://github.com/aunghein-dev/pos-jar/tree/main). If you have questions or want to collaborate, just reach out!
+
+---
+
+Try it yourself:
+[GitHub Repository - POS System](https://github.com/aunghein-dev/pos-jar/tree/main)

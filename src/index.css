@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  max-width: 700px; /* typical mobile width */
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--color-background);
+  margin-top: 42px;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+* {
+  scrollbar-color: var(--color-accent) var(--color-background);
+}
+*::-webkit-scrollbar-track {
+  background: var(--color-accent);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-background);
+  border-radius: 20px;
+  border: 3px solid var(--color-accent);
+}
+
+*:focus {
+  outline: 1.5px dashed var(--color-secondary-txt);
+  outline-offset: 0.25rem;
+  border-radius: 0.15rem;
+}
+
+:root,
+::backdrop {
+  /* Base */
+
+  --color-badge : rgba(12, 18, 30, 0.85);
+
+  --color-blockquote:rgba(56, 103, 214, 0.024);
+  --color-border-blockquote:rgba(6, 10, 21, 0.12);
+
+  --color-background: #ffffff;
+  --color-surface: #f5f5f5; /* surface variant */
+  --color-surface-variant: #e0e0e0;
+  --color-divider: rgba(0, 0, 0, 0.12);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+
+  /* Toolbar / Header */
+  --color-toolbar: rgba(255, 255, 255, 0.9);
+  --color-toolbar-highlight: rgba(0, 0, 0, 0.05);
+
+  /* Accent (Material Blue) */
+  --color-accent: rgb(56, 103, 214);
+  --color-accent-dark: rgb(56, 103, 214);
+  --color-on-accent: #ffffff;
+
+  /* States */
+  --color-accent-hover: rgb(45, 82, 171);
+  --color-accent-pressed: #174ea6;
+
+  /* Text */
+  --color-primary-txt: #202124;
+  --color-secondary-txt: #5f6368;
+  --color-tertiary-txt: #80868b;
+
+  /* Functional Colors */
+  --color-success: #188038;
+  --color-warning: #e37400;
+  --color-error: #d93025;
+
+  /* Misc */
+  --opacity-tint-bg: 0.08;
+  --opacity-tint-border: 0.16;
+  --elevation-1: 0 1px 3px var(--color-shadow);
+  --elevation-2: 0 4px 6px var(--color-shadow);
+
+  --color-nav : rgba(56, 103, 214, 0.05);
+  --color-nav-shawdow: 0px 2px 6px rgba(188, 188, 188, 0.3);
+
+
+  --color-orange: rgb(234, 88, 12);
+  --color-green : rgb(5, 150, 105);
+  --color-violet : rgb(124, 58, 237);
+
+  --color-theme-btn: #f3f4f6;
+  --color-theme-btn-hover: #e5e7eb;
+
+  --color-paragraph : rgba(12, 18, 30, 0.85);
+
+  --color-blog-image-gradient : linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100%);
+}
+
+html.dark {
+  /* Base */
+  --color-badge : rgba(251, 252, 254, 0.85);
+
+  --color-blockquote:rgba(215, 225, 247, 0.05);
+  --color-border-blockquote:rgba(235, 240, 251, 0.18);
+  
+  --color-background: rgb(12, 18, 30);
+  --color-surface: #303134;
+  --color-surface-variant: #3c4043;
+  --color-divider: rgba(255, 255, 255, 0.1);
+  --color-shadow: rgba(0, 0, 0, 0.6);
+
+  /* Toolbar / Header */
+  --color-toolbar: rgba(255, 255, 255, 0.05);
+  --color-toolbar-highlight: rgba(255, 255, 255, 0.08);
+
+  /* Accent (Blue with slight neon) */
+  --color-accent: #8ab4f8;
+  --color-accent-dark: #669df6;
+  --color-on-accent: #202124;
+
+  /* States */
+  --color-accent-hover: #669df6;
+  --color-accent-pressed: #4e8ef7;
+
+  /* Text */
+  --color-primary-txt: #e8eaed;
+  --color-secondary-txt: rgba(232, 234, 237, 0.8);
+  --color-tertiary-txt: rgba(232, 234, 237, 0.6);
+
+  /* Functional Colors */
+  --color-success: #34a853;
+  --color-warning: #fbbc04;
+  --color-error: #ea4335;
+
+  /* Misc */
+  --opacity-tint-bg: 0.24;
+  --opacity-tint-border: 0.48;
+  --elevation-1: 0 1px 2px var(--color-shadow);
+  --elevation-2: 0 4px 8px var(--color-shadow);
+
+  --color-nav : hsla(0, 0%, 100%, 0.090);
+  --color-nav-shawdow: 0px 2px 6px rgba(178, 178, 178, 0.3);
+
+  --color-orange: rgb(251, 146, 60);
+  --color-green : rgb(52, 211, 153);
+  --color-violet : rgb(167, 139, 250);
+
+  --color-theme-btn: #1f2937; 
+  --color-theme-btn-hover: #374151;
+
+  --color-paragraph: rgba(251, 252, 254, 0.85);
+
+  --color-blog-image-gradient : linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%);
+}
+
+
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.site-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-accent-dark)
+}
+
+
+/* NAV STYLES */
+.nav {
+  background-color: var(--color-nav);
+  border-radius: 0.7rem;
+  color: var(--color-primary-txt);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+  height: 56px;
+  border: 1px solid var(--color-divider);
+  transition: box-shadow 0.4s ease;
+
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%); /* Center it */
+  width: calc(100% - 1.6rem); /* add horizontal margin spacing */
+  max-width: 676px; /* matches body */
+  z-index: 1000;
+}
+
+
+.nav:hover {
+  box-shadow: var(--color-nav-shawdow);
+}
+
+.nav li {
+  font-size: 0.9rem;
+  min-width: 4.2rem;
+  height: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+  border-radius: 0.3rem;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.4s ease; 
+  margin-left: 3px;
+}
+
+.nav-links {
+  gap: 4px; /* Adjust based on your desired spacing */
+}
+
+.nav li:hover {
+  background-color: rgba(26, 115, 232, 0.1);
+}
+
+.nav li.active {
+  border-radius: 0.3rem;
+  background-color: rgba(26, 115, 232, 0.1);
+  filter: brightness(1.1);
+}
+
+.nav li a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.3rem; 
+}
+/* Add this in your global CSS */
+li a.group/post:hover {
+  background-color: rgba(138, 180, 248, var(--opacity-tint-bg));
+}

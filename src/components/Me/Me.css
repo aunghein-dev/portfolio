@@ -1,0 +1,28 @@
+.me-info{
+  color: var(--color-primary-txt);
+  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: top;
+  gap: 1rem;
+}
+
+.my-name{
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.country-link{
+  text-decoration: underline;
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.info-details{
+  color: var(--color-secondary-txt);
+  font-weight: 300;
+  line-height: 1.6rem;
+  max-width: 98%;
+}
+

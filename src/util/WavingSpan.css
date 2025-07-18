@@ -1,0 +1,45 @@
+@keyframes waveShakeWait {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  10% {
+    transform: rotate(0deg);
+  }
+
+  /* Shake sequence (same as before) */
+  15% {
+    transform: rotate(-20deg);
+  }
+  20% {
+    transform: rotate(20deg);
+  }
+  25% {
+    transform: rotate(-20deg);
+  }
+  30% {
+    transform: rotate(20deg);
+  }
+  35% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(20deg);
+  }
+  45% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+
+  /* Wait */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.shaking-and-waving {
+  animation: waveShakeWait 6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
